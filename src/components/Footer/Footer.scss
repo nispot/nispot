@@ -1,0 +1,14 @@
+@import '../../assets/styles/variables';
+
+.footer-container {
+    width: 100%;
+    height: 75px;
+    background-color: $dark-gray;
+    color: white;
+    /*     position: absolute;
+    bottom: 100px; */
+    /* transform: translateY(-100px); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

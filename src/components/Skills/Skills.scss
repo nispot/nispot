@@ -1,0 +1,85 @@
+@import './../../assets/styles/variables';
+
+.skills {
+    display: flex;
+    margin-top: 80px;
+    @media only screen and (max-width: 700px) {
+        flex-direction: column;
+        margin-top: 20px;
+      }
+
+    &-container {
+        margin-bottom: 100px;
+        background-image: url(../../../public/images/skills_circle.svg);
+        background-repeat: no-repeat;
+        background-position:bottom right;
+        background-size: contain;
+    }
+
+    &-sidebar {
+        flex-basis: 25%;
+    }
+    
+    &-switch {
+        color: $white;
+        font-size: 20px;
+        font-weight: 600;
+        display: flex;
+        align-content: center;
+        span {
+            margin-right: 15px;
+        }
+        @media only screen and (max-width: 880px) {
+            display: none;
+          }
+    }
+    &-filters {
+        color: $white;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    &-list {
+        list-style: none;
+        color: $gray;
+        font-size: 20px;
+        font-weight: 400;
+        padding-left: 20px;
+        @media only screen and (max-width: 700px) {
+            display: flex;
+            flex-wrap: wrap;
+          }
+        li {
+            cursor: pointer;
+            @media only screen and (max-width: 700px) {
+                margin-right: 10px;
+              }
+        }
+    }
+
+    &-cloud {
+        margin-top: 50px;
+        width: 100%;
+        padding-right: 15%;
+    }
+
+    .activecat {
+        color: $green;
+    }
+
+    .skill-container {
+        display: flex;
+        align-items: center;
+/*         img {
+            filter: brightness(0) invert(1);
+        } */
+    }
+
+    .skill-icon {
+        height: 25px;
+        margin-right: 10px;
+        @media only screen and (max-width: 880px) {
+            display: none;
+          }
+    }
+}

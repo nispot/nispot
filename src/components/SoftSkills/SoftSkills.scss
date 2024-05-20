@@ -1,0 +1,80 @@
+@import './../../assets/styles/variables';
+
+.soft {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    @media only screen and (max-width: 1170px) {
+       flex-direction: column;
+       margin-top: 30px;
+       
+      }
+
+    &-card {
+        box-sizing: border-box;
+        border-radius: 10px;
+        height: 480px;
+        width: 30%;
+        background-color: $dark-gray;
+        padding: 50px;
+        @media only screen and (max-width: 1170px) {
+            width: 100%;
+            margin-top: 25px;
+            text-align: center;
+           }
+        &-title { 
+            text-transform: uppercase;
+            font-family: $text-font;
+            font-weight: 400;
+            font-size: 25px;
+            &-coder {
+                color: $blue;
+            }
+            &-designer {
+                color: $red;
+            }
+            &-nispot {
+                color: $green;
+            }
+        }
+
+        &-list {
+            @media only screen and (max-width: 1170px) {
+                width: fit-content;
+                text-align: left;
+                margin: 0 auto;
+            }
+            &-item {
+                color: $gray;
+                padding-left: 10px;
+                font-size: 20px;
+                line-height: 30px;
+            }
+            &-coder {
+                list-style: url(../../../public/images/arrow-blue.svg);
+            }
+            &-designer {
+                list-style: url(../../../public/images/arrow-red.svg);
+            }
+            &-nispot {
+                list-style: url(../../../public/images/arrow-green.svg);
+            }
+        } 
+
+        &-coder {
+            border-bottom: 6px solid $blue;
+        }
+
+        &-designer {
+            border-bottom: 6px solid $red;
+        }
+
+        &-nispot {
+            border-bottom: 6px solid $green;
+        }
+    }
+}

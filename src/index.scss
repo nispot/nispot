@@ -1,0 +1,50 @@
+@import './assets/styles/variables';
+/* @import 'assets/styles/links';
+@import 'assets/styles/basics'; */
+
+body {
+  margin: 0;
+  font-family: $text-font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  padding: 0px 200px;
+  @media only screen and (max-width: 1520px) {
+    padding: 0px 80px;
+  }
+  @media only screen and (max-width: 600px) {
+    padding: 0px 20px;
+  }
+}
+
+
+
+.title-section {
+  font-family: $code-font;
+  font-weight: 400;
+  color: $gray;
+  font-size: 40px;
+}
+
+.subtilte-section {
+  color: $gray;
+  font-size: 22px;
+  font-family: $text-font;
+}
+
+.rounded-button {
+  padding: 10px 40px;
+  border-radius: 25px;
+  width: fit-content;
+  border: 1px solid $green;
+  color: $green;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  img {
+      margin-right: 10px;
+      height: 20px;
+  }
+}

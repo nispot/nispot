@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import AnimatedCursor from "react-animated-cursor"
+import './index.scss';
+import PortfolioApp from './PortfolioApp';
 import reportWebVitals from './reportWebVitals';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PortfolioApp />
+    <AnimatedCursor
+      innerSize={22}
+      outerSize={22}
+      color='0, 248, 156'
+      outerAlpha={0.3}
+      innerScale={0.7}
+      outerScale={5}
+    />
   </React.StrictMode>,
   document.getElementById('root')
 );

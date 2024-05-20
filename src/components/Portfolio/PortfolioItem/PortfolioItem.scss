@@ -1,0 +1,30 @@
+@import '../../../assets/styles/variables';
+
+.portfolio-item {
+    font-size: 0.8rem;
+    padding: 0.5rem 2rem;
+    border: 1px solid gray;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    color: white;
+    font-family: $code-font;
+  }
+  
+  .portfolio-item:hover {
+    border: 1px solid $green;
+    color: $green;
+  }
+  
+  .portfolio-item.active {
+    border: 1px solid $green;
+    color: $green;
+    font-weight: 600;
+  }
+  
+  @media screen and (min-width: 701px) {
+    .portfolio-item {
+      font-size: 1rem;
+    }
+  }

@@ -1,0 +1,58 @@
+$white: #FDFFFF;
+/* $black: #25262B; */
+$black: #1e1f22;
+$dark-gray: #2C2F33;
+$gray: #7D7F83;
+$green: #00F89C;
+$red: #FD5658;
+$blue: #00D8FF;
+
+$text-font: 'IBM Plex Sans Thai Looped',
+sans-serif;
+$code-font: 'Ubuntu Mono',
+monospace;
+
+@mixin button($bg) {
+    background: $bg;
+    padding: 6px 20px;
+    &:hover {
+        background: darken($bg, 8%);
+        transition: all 0.3s ease;
+    }
+
+    &:active {
+        background: darken($bg, 25%);
+    }
+    font-family: $code-font;
+    font-size: 16px;
+}
+
+html  {
+    box-sizing: border-box;
+}
+
+.btn {
+    color: $black;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-family: $code-font;
+    font-size: 16px;
+}
+
+.btn-green {
+    @include button ($green);
+ }
+
+ .btn-blue {
+    @include button ($blue);
+ }
+
+ .btn-red {
+    @include button ($red);
+    
+ }
+
+ .section {
+     background-color: $black;
+ }
+

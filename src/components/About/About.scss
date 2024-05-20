@@ -1,0 +1,70 @@
+@import './../../assets/styles/variables';
+
+.info-about {
+    display: flex;
+    @media only screen and (max-width: 1170px) {
+        flex-direction: column;
+      }
+}
+
+.about-left {
+    flex-basis: 60%;
+    .studies {
+        color: $green;
+        font-family: $code-font;
+        font-size: 35px;
+        @media only screen and (max-width: 1170px) {
+            font-size: 25px;
+          }
+        .small-text {
+            font-size: 26px;
+            color: $gray;
+            font-size: 18px;
+        }
+    }
+
+    .grid {
+        font-family: $code-font;
+        font-size: 20px;
+        display: flex;
+        color: $white;
+        @media only screen and (max-width: 1170px) {
+            font-size: 14px;
+          }
+        .text-color {
+            color: $green;
+        }
+        .grid-left {
+            flex-basis: 65%;
+        }
+        .cv-button {
+            margin-top: 60px;
+            @media only screen and (max-width: 1170px) {
+                margin: 0 auto;
+                margin-top: 30px;
+              }
+        }
+    }
+
+}
+
+.about-right {
+    padding-left: 120px;
+    @media only screen and (max-width: 1170px) {
+        padding-left: 0px;
+        margin-top: 25px;
+      }
+    .text-about {
+        border: 1px solid $gray;
+        padding: 45px;
+        color: $white;
+        font-family: $text-font;
+        font-size: 20px;
+        @media only screen and (max-width: 1170px) {
+            font-size: 18px;
+          }
+    }
+
+
+
+}
