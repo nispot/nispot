@@ -21,18 +21,18 @@ const Info = () => {
       resetOnLeave
     >
       <MouseParallaxChild factorX={0.05} factorY={0.05}>
-        <button
+{/*         <button
           className="btn btn-green animate__animated animate__slideInLeft"
         >
           JS FULLSTACK DEVELOPER
         </button>
         <br />
-        <br />
+        <br /> */}
         <button
           href="#"
           className="btn btn-green animate__animated animate__slideInLeft"
-        >
-          JS FRONTEND SPECIALIST
+        > 
+        FRONTEND SPECIALIST DEVELOPER
         </button>
         <h1 className="title-caption animate__animated animate__slideInLeft animate__delay-1s">
           “The only way to do great work is to love what you do.”
