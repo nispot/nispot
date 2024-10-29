@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="171" height="171" viewBox="0 0 171 171">
+  <g id="Grupo_2" data-name="Grupo 2" transform="translate(-901 -712)">
+    <circle id="Elipse_2" data-name="Elipse 2" cx="85.5" cy="85.5" r="85.5" transform="translate(901 712)" fill="#25262b"/>
+    <g id="angular_1" transform="translate(930.4 758.032)">
+      <path id="Trazado_1" data-name="Trazado 1" d="M56.153,0,19.6,13.3l6.556,49.217,30,16.653,30-16.669,6.556-49.2Zm0,6.68L85.81,17.473,80.337,58.556,56.153,71.978,31.97,58.541,26.5,17.473Zm0,6.077L37.3,56.732h6.278l4.051-9.417H64.658l4.051,9.417h6.278Zm0,14.3.062.186,2.2,5.489,3.541,8.288H50.339l3.541-8.288,2.2-5.489Z" transform="translate(0)" fill="#fd5658"/>
+    </g>
+  </g>
+</svg>

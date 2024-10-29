@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <g id="jira-plain" transform="translate(-16 -16)">
+    <path id="Trazado_84" data-name="Trazado 84" d="M85.877,16H61.805A10.853,10.853,0,0,0,72.663,26.858H77.09v4.284A10.854,10.854,0,0,0,87.948,42V18.071" transform="translate(-21.948)" fill="#fff"/>
+    <path id="Trazado_85" data-name="Trazado 85" d="M62.974,39.04H38.9A10.853,10.853,0,0,0,49.758,49.9h4.429v4.284A10.854,10.854,0,0,0,65.046,65.041V41.111" transform="translate(-10.974 -11.04)" fill="#fff"/>
+    <path id="Trazado_86" data-name="Trazado 86" d="M40.072,62.078H16A10.852,10.852,0,0,0,26.858,72.936h4.427v4.286A10.852,10.852,0,0,0,42.143,88.079V64.151" transform="translate(0 -22.079)" fill="#fff"/>
+  </g>
+</svg>
