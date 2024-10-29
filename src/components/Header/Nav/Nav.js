@@ -25,7 +25,7 @@ export const Nav = () => {
       <nav className="menu menu-right">
         <ul>
           <li>
-          <a href="https://www.linkedin.com/in/nispot/" target="_blank">
+          <a href="https://www.linkedin.com/in/nispot/" target="_blank" rel="noreferrer">
             <img
               className="linkedin-icon"
               src="images/linkedin.svg"
@@ -35,7 +35,7 @@ export const Nav = () => {
             </a>
           </li>
           <li>
-          <a href="https://github.com/nispot" target="_blank">
+          <a href="https://github.com/nispot" target="_blank" rel="noreferrer">
             <img
               className="github-icon"
               src="images/github.svg"

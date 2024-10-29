@@ -1,10 +1,9 @@
 /* import ReactWordcloud from "react-wordcloud"; */
 import { useState } from "react";
-import { MouseParallaxContainer, MouseParallaxChild, } from "react-parallax-mouse";
 import Switch from "react-switch";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import "./Skills.scss";
 import skillsList from "./skillsList";
-import useWindowDimensions from "../../hooks/useWindowDimensions"
 
 const stylesContainer = {
   textAlign: "center",
@@ -33,7 +32,7 @@ const categories = [
 
 export default function Skills() {
   const [checked, setChecked] = useState(true);
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   //console.log(checked)
 
   const [category, setCategory] = useState('All')
@@ -45,7 +44,7 @@ export default function Skills() {
   };
 
   const handleChangeCategory = (cat) => {
-    if(cat == "All") {
+    if(cat === "All") {
       setCategory(cat);
       setSkillsFiltered(skillsList);
     }else{
@@ -71,20 +70,20 @@ export default function Skills() {
         <div className="skills-sidebar">
           <label className="skills-switch">
             <span>SHOW ICONS</span>
-            <a><Switch
+            <Switch
               onChange={handleChange}
               checked={checked}
               onColor={"#00F89C"}
               checkedIcon={false}
               uncheckedIcon={false}
-            /></a>
+            />
           </label>
           <div>
             <p className="skills-filters">FILTERS:</p>
             <ul className="skills-list">
               {
                 categories.map ((cat)=> {
-                  return  <li key={cat} className={`${(category == cat) && "activecat"}`} onClick={()=>handleChangeCategory(cat)}><a>{cat}</a></li>
+                  return  <li key={cat} className={`${(category === cat) && "activecat"}`} onClick={()=>handleChangeCategory(cat)}>{cat}</li>
                 })
               }
             </ul>

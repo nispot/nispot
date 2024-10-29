@@ -21,20 +21,19 @@ const Info = () => {
       resetOnLeave
     >
       <MouseParallaxChild factorX={0.05} factorY={0.05}>
-        <a
-          href="#"
+        <button
           className="btn btn-green animate__animated animate__slideInLeft"
         >
           JS FULLSTACK DEVELOPER
-        </a>
+        </button>
         <br />
         <br />
-        <a
+        <button
           href="#"
           className="btn btn-green animate__animated animate__slideInLeft"
         >
           JS FRONTEND SPECIALIST
-        </a>
+        </button>
         <h1 className="title-caption animate__animated animate__slideInLeft animate__delay-1s">
           “The only way to do great work is to love what you do.”
         </h1>

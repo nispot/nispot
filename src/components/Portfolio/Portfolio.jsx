@@ -21,13 +21,15 @@ const Portfolio = ({ fullpageApi }) => {
   const [selected, setSelected] = useState("Featured");
   const [data, setData] = useState([]);
 
-  const reBuild = () => {
-    fullpageApi.reBuild();
-  }
 
   const firstUpdate = useRef(true);
 
   useEffect(() => {
+
+    const reBuild = () => {
+      fullpageApi.reBuild();
+    }
+
 
     if (selected === "all") {
       setData(allPortfolio);
@@ -50,7 +52,7 @@ const Portfolio = ({ fullpageApi }) => {
       }, 800);
     }
     firstUpdate.current = false;
-  }, [selected]);
+  }, [selected, fullpageApi]);
 
 
 
@@ -67,7 +69,7 @@ const Portfolio = ({ fullpageApi }) => {
         <div id="workslist" className="list">
           {portfolioList &&
             portfolioList.map((list) => (
-              <a key={list.id}>
+              <div key={list.id}>
                 <PortfolioItem
                   title={list.title}
                   active={selected === list.id}
@@ -76,7 +78,7 @@ const Portfolio = ({ fullpageApi }) => {
                   repoUrl={list.repositoryUrl}
                   liveUrl={list.liveUrl}
                   tagline={list.tagline}
-                /></a>
+                /></div>
             ))}
         </div>
 
