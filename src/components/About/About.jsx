@@ -9,8 +9,8 @@ export const About = () => {
 
       <div className='info-about'>
         <div className='about-left  animate__animated animate__slideInLeft'>
-          <p className='studies'>Web Fullstack Developer<br />
-            <span style={{ fontSize: "28px" }}>Web Fontend Specialist</span><br />
+          <p className='studies'>Js Fullstack Developer<br />
+            <span style={{ fontSize: "28px" }}>Js Fontend Specialist</span><br />
             <span className='small-text'>Business Administration</span></p>
 
           <div className='grid'>
@@ -21,8 +21,8 @@ export const About = () => {
 
             </div>
             <div className='grid-right'>
-              <p><span className='text-color'>Age:</span> 43 years</p>
-              <p><span className='text-color'>City:</span> Cancun, Mexico</p>
+              <p><span className='text-color'>Age:</span> 44 years</p>
+              <p><span className='text-color'>Location:</span> Mexico City</p>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@ export const About = () => {
             <p>
 
               My name is Nicolás.<br />
-              I’m an argentinian creative developer based in Cancun, Mexico.<br />
+              I’m an argentinian creative developer based in Mexico City.<br />
               I’ve been working with web technologies for more than 10 years.<br />
               I’m a dreamer person who thinks to change the future imagining and writing code.<br />
               Passionate Frontender with a solid track record of leading teams to success in web development projects.<br />

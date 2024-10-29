@@ -25,7 +25,7 @@ const Info = () => {
           href="#"
           className="btn btn-green animate__animated animate__slideInLeft"
         >
-          FULLSTACK DEVELOPER
+          JS FULLSTACK DEVELOPER
         </a>
         <br />
         <br />
@@ -33,7 +33,7 @@ const Info = () => {
           href="#"
           className="btn btn-green animate__animated animate__slideInLeft"
         >
-          WEB FRONTEND SPECIALIST DEVELOPER
+          JS FRONTEND SPECIALIST
         </a>
         <h1 className="title-caption animate__animated animate__slideInLeft animate__delay-1s">
           “The only way to do great work is to love what you do.”

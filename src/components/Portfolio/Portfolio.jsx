@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Portfolio.scss";
 
 // Data
 import {
-  portfolioList,
-  allPortfolio
+  allPortfolio,
+  portfolioList
 } from "../../data/data";
 
 // components
@@ -13,11 +13,11 @@ import {
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { faExternalLinkSquareAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkSquareAlt";
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons/faGithubSquare";
+import { faExternalLinkSquareAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkSquareAlt";
 import PortfolioItem from "./PortfolioItem/PortfolioItem";
 
-const Portfolio = ({fullpageApi}) => {
+const Portfolio = ({ fullpageApi }) => {
   const [selected, setSelected] = useState("Featured");
   const [data, setData] = useState([]);
 
@@ -28,26 +28,26 @@ const Portfolio = ({fullpageApi}) => {
   const firstUpdate = useRef(true);
 
   useEffect(() => {
-    
-    if(selected == "all") {
+
+    if (selected === "all") {
       setData(allPortfolio);
     } /* else 
     if(selected == "featured") {
       setData(featuredPortfolio);
-    } */else{
+    } */else {
       setData(
-       allPortfolio.filter(function(item) {
-        return item.tagline.includes(selected);
-      }
-      )
+        allPortfolio.filter(function (item) {
+          return item.tagline.includes(selected);
+        }
+        )
       );
     }
     if (!firstUpdate.current) {
-      
+
       setTimeout(() => {
         //console.log("rebuilded")
         reBuild();
-      }, 800); 
+      }, 800);
     }
     firstUpdate.current = false;
   }, [selected]);
@@ -62,21 +62,21 @@ const Portfolio = ({fullpageApi}) => {
         name="portfolio"
         id="portfolio"
       >
-        <h2 className="title-section text-left"> {`<Portfolio/>`} </h2>
+        <h2 className="title-section text-left"> {`<freelancerPortfolio/>`} </h2>
 
         <div id="workslist" className="list">
           {portfolioList &&
             portfolioList.map((list) => (
               <a key={list.id}>
-              <PortfolioItem
-                title={list.title}
-                active={selected === list.id}
-                setSelected={setSelected}
-                id={list.id}
-                repoUrl={list.repositoryUrl}
-                liveUrl={list.liveUrl}
-                tagline={list.tagline}
-              /></a>
+                <PortfolioItem
+                  title={list.title}
+                  active={selected === list.id}
+                  setSelected={setSelected}
+                  id={list.id}
+                  repoUrl={list.repositoryUrl}
+                  liveUrl={list.liveUrl}
+                  tagline={list.tagline}
+                /></a>
             ))}
         </div>
 
@@ -133,7 +133,7 @@ const Portfolio = ({fullpageApi}) => {
         </div>
 
       </div>
-      
+
     </section>
 
   );

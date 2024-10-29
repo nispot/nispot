@@ -11,4 +11,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    p {
+        margin: 0;
+    }
+}
+
+.footer-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
 }
