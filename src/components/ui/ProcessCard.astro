@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import processImg from '../../../public/images/process.svg';
+interface Props {
+  variant?: string;
+  title?: string;
+  body?: string;
+  index?: string;
+}
+
+const { index, title, body, variant='text' } = Astro.props;
+---
+  <li class={ `${variant === 'text' ? 'bg-beige justify-between' : 'bg-black-900 justify-center'} flex flex-col rounded-xl p-4 pt-8 pb-8 min-h-[200px] md:min-h-[395px]`}>
+    { variant === 'text' ? (
+    <h2 class='text-2xl md:text-4xl font-bold mb-4'>
+      {index}
+    </h2>
+    <div>
+    <h3 class="text-xl md:text-3xl font-bold mb-4 ">    
+      {title}
+    </h3>
+    <p>
+      {body}
+    </p>
+    </div>
+    )
+    : (
+    <Image src={processImg} alt={'process'} width={229} height={229} class="w-[50%] self-center md:w-[100%]" />
+    )
+    }
+  </li>

@@ -1,0 +1,18 @@
+---
+export interface Props {
+  textColor?: 'white' | 'black';
+}
+
+const { textColor = 'black' } = Astro.props;
+
+const textClass = textColor === 'white' ? 'text-white' : 'text-black';
+---
+
+<a href='/' class='flex items-center space-x-3 rtl:space-x-reverse'>
+  <img src='./nispot-logo.svg' class='w-10' alt='nispot Logo' />
+  <span
+    class={`self-center text-2xl font-semibold whitespace-nowrap ${textClass}`}
+  >
+    nispot<span class='text-brand'>.dev</span>
+  </span>
+</a>

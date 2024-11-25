@@ -1,0 +1,89 @@
+---
+import Button from './ui/Button.astro';
+
+const projects = [
+  {
+    title: 'Project 1',
+    description: 'This is a description of project 1',
+    image: 'utag.png',
+    link: '#',
+  },
+  {
+    title: 'Project 2',
+    description: 'This is a description of project 2',
+    image: 'alamo.png',
+    link: '#',
+  },
+  {
+    title: 'Project 3',
+    description: 'This is a description of project 3',
+    image: 'caviaroli.png',
+    link: '#',
+  },
+  {
+    title: 'Project 4',
+    description: 'This is a description of project 4',
+    image: 'florencia.png',
+    link: '#',
+  },
+  {
+    title: 'Project 5',
+    description: 'This is a description of project 5',
+    image: 'sinteplast.png',
+    link: '#',
+  },
+  {
+    title: 'Project 6',
+    description: 'This is a description of project 6',
+    image: 'sancor.png',
+    link: '#',
+  },
+];
+---
+
+<section class='bg-black-900 px-4 sm:px-6 md:px-8 lg:px-10'>
+  <div class='w-full mx-auto max-w-screen-xl pt-10 pb-10 flex flex-col'>
+    <div class='flex items-end justify-between pb-10'>
+      <p class='text-white text-3xl font-bold pt-10'>
+        Take a look at my most<br /> impactful projects
+      </p>
+      <div>
+        <Button text='View all projects' href='#' invert={true} />
+      </div>
+    </div>
+    <div class='grid gap-8'>
+      {
+        projects.map(
+          (project, index) =>
+            // Agrupamos las imágenes de dos en dos
+            index % 2 === 0 && (
+              <div
+                class={`grid ${
+                  index % 4 === 0
+                    ? 'grid-cols-[40.5%_58.5%]'
+                    : 'grid-cols-[58.5%_40.5%]'
+                } gap-4`}
+              >
+                <div>
+                  <img
+                    src={`/images/portfolio/${project.image}`}
+                    alt={project.title}
+                    class='rounded-md w-full h-auto'
+                  />
+                </div>
+                {projects[index + 1] && (
+                  <div>
+                    <img
+                      src={`/images/portfolio/${projects[index + 1].image}`}
+                      alt={projects[index + 1].title}
+                      class='rounded-md w-full h-auto'
+                    />
+                  </div>
+                )}
+              </div>
+            )
+        )
+      }
+    </div>
+  </div>
+</section>

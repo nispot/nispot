@@ -1,0 +1,54 @@
+<section class='bg-black-900 mt-10 mb-10 overflow-hidden'>
+  <div class='marquee flex items-center justify-around min-w-[1720px]'>
+    <div>
+      <img src='/images/companies/globant.svg' alt='hero' width='100%' />
+    </div>
+    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
+    <div>
+      <img src='/images/companies/dell.svg' alt='hero' width='100%' />
+    </div>
+    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
+    <div>
+      <img src='/images/companies/coderslab.svg' alt='hero' width='100%' />
+    </div>
+    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
+    <div>
+      <img src='/images/companies/cencosud.svg' alt='hero' width='100%' />
+    </div>
+    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
+    <div>
+      <img src='/images/companies/telecom.svg' alt='hero' width='100%' />
+    </div>
+    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
+  </div>
+</section>
+<style>
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    animation: marquee 200s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const marquee = document.querySelector('.marquee');
+    const marqueeItems = marquee?.innerHTML || '';
+
+    // Clonar los elementos una vez para crear el efecto infinito
+    marquee!.innerHTML +=
+      marqueeItems + marqueeItems + marqueeItems + marqueeItems + marqueeItems;
+
+    // Ajustar el ancho mínimo del contenedor dinámicamente
+    const itemCount = marquee!.children.length;
+    (marquee as HTMLElement).style.minWidth = `${itemCount * 200}px`; // 200px es el ancho promedio por item, ajusta según tus necesidades
+  });
+</script>

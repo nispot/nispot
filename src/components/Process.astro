@@ -1,0 +1,47 @@
+---
+import ProcessCard from './ui/ProcessCard.astro';
+const steps = [
+  {
+    title: 'Idea & Planning',
+    description:
+      'I start by defining clear goals and understanding the users to build effective solutions.',
+  },
+  {
+    title: 'Design & Prototyping',
+    description:
+      'I transform ideas into wireframes and functional designs that guide development.',
+  },
+  {
+    title: 'Development & Refinement',
+    description:
+      'I build, test, and improve the product iteratively, incorporating user feedback along the way.',
+  },
+  {
+    title: 'Testing & Quality',
+    description:
+      'I ensure reliability and usability by running thorough tests before launch.',
+  },
+];
+---
+
+<section
+  class='w-full mx-auto max-w-screen-xl mt-10 mb-10 px-4 sm:px-6 md:px-8 lg:px-10'
+>
+  <h2 class='text-3xl font-bold mb-4 text-center mt-10 mb-10'>
+    Bringing Ideas to Life Through<br />Creativity
+  </h2>
+  <ul
+    class='grid grid-cols-1 md:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4'
+  >
+    <ProcessCard variant='image' />
+    {
+      steps.map((step, index) => (
+        <ProcessCard
+          title={step.title}
+          body={step.description}
+          index={`0${index + 1}`}
+        />
+      ))
+    }
+  </ul>
+</section>

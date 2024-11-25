@@ -1,0 +1,63 @@
+---
+import Button from './Button.astro';
+
+/* interface TestimonialCardProps {
+  name: string;
+  title: string;
+  body: string;
+  photo: string;
+  profileUrl: string;
+}
+ */
+const {
+  name = 'John Doe',
+  title = 'CEO, Company',
+  body = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  photo = '/images/testimonial.jpg',
+  profileUrl = '#',
+} = Astro.props;
+---
+
+<div class='keen-slider__slide'>
+  <blockquote
+    class='flex h-full flex-col justify-between bg-white rounded-2xl p-4 shadow-sm sm:p-6 lg:p-8'
+  >
+    <div>
+      <div class='mt-2 flex items-center justify-between gap-4'>
+        <p class='text-2xl font-bold text-rose-600 sm:text-3xl'>
+          <svg
+            width='58'
+            height='38'
+            viewBox='0 0 58 38'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M28.0701 35.9999C29.6701 32.3999 31.5701 28.5999 33.7701 24.5999C35.9701 20.5999 38.3201 16.5499 40.8201 12.4499C43.3201 8.3499 45.7201 4.4999 48.0201 0.899902H57.9201C56.2201 4.79991 54.4201 8.94991 52.5201 13.3499C50.7201 17.7499 48.9701 22.0499 47.2701 26.2499C45.6701 30.3499 44.2701 34.1499 43.0701 37.6499H28.6701L28.0701 35.9999ZM0.620117 35.9999C2.22012 32.3999 4.07012 28.5999 6.17012 24.5999C8.37012 20.5999 10.6701 16.5499 13.0701 12.4499C15.5701 8.3499 17.9701 4.4999 20.2701 0.899902H30.3201C29.0201 3.89991 27.6701 6.99991 26.2701 10.1999C24.9701 13.3999 23.6701 16.6499 22.3701 19.9499C21.0701 23.1499 19.8201 26.2499 18.6201 29.2499C17.4201 32.2499 16.3701 35.0499 15.4701 37.6499H1.07012L0.620117 35.9999Z'
+              fill='#FF571E'></path>
+          </svg>
+        </p>
+
+        <img
+          src={photo}
+          alt={name}
+          class='w-16 h-16 rounded-full mt-4 sm:w-20 sm:h-20'
+        />
+      </div>
+    </div>
+    <p class='mt-4 leading-relaxed text-black-400 font-medium w-[70%]'>
+      {body}
+    </p>
+    <footer
+      class='flex-col md:flex-row mt-4 flex items-start md:items-end justify-between'
+    >
+      <div>
+        <p class='text-xl font-medium text-black-900 sm:mt-6'>{name}</p>
+        <p class='text-sm text-black-500'>&mdash; {title}</p>
+      </div>
+      <div class='mt-4 self-end md:mt-0' '>
+        <Button text='View Profile' href={profileUrl} />
+      </div>
+    </footer>
+  </blockquote>
+</div>

@@ -1,0 +1,168 @@
+---
+import TestimonialCard from './ui/TestimonialCard.astro';
+
+const testimonials = [
+  {
+    name: 'Matìas Nuñez',
+    title: 'UX Lead',
+    body: 'His ability to identify issues and develop evidence-based action plans would be an invaluable asset to any project or company.',
+    photo: {
+      src: 'https://media.licdn.com/dms/image/v2/D4D03AQGWGL2P_sbBMA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1689286152469?e=1738195200&v=beta&t=OB5W2xBi3NaPaOKF8qowQZj8aYNmF5HWq6O3G1RjEL4',
+    },
+    profileUrl: 'https://www.linkedin.com/in/uxmato/',
+  },
+  {
+    name: 'José Luis Silva Sulbarán',
+    title: 'Sr. UX Engineer',
+    body: 'A developer with excellent technical skills, but also someone who can lead and collaborate in a way that makes him an incredible ally.',
+    photo: {
+      src: 'https://media.licdn.com/dms/image/v2/C4D03AQEtEWt1RoTPpg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1657425480631?e=1738195200&v=beta&t=PbdBVK-3WDmTmVULcMvRQ4kBf4J08FFfQNlIpD-6Xa4',
+    },
+    profileUrl: 'https://www.linkedin.com/in/jose-silvaart/',
+  },
+  {
+    name: 'Sebastiá Soria Gorgoroso',
+    title: 'Software Developer',
+    body: 'Few people leave the impression he left on me. As a developer, he helped me grow tremendously. He has exceptional skills for teaching and problem-solving.',
+    photo: {
+      src: 'https://media.licdn.com/dms/image/v2/D4E03AQGXN6u1k5kuQg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1718303004864?e=1738195200&v=beta&t=qtOHo6wZVpDvQv5OFWaSe7ufQiRNSt-uDSqV-hDC6hs',
+    },
+    profileUrl: 'https://www.linkedin.com/in/soriagorgoroso/',
+  },
+  {
+    name: 'Juan Ignacio Cajiao',
+    title: 'Product Designer | Design Systems',
+    body: 'I highlight his proactive attitude and constant effort to achieve excellence in digital products, as well as his ability to foster a great team environment.',
+    photo: {
+      src: 'https://media.licdn.com/dms/image/v2/C4D03AQEkVguuOJZc6g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1635532019549?e=1738195200&v=beta&t=SyHEgFHSshOu_W4N08q6GrhhJhjFXbL1rPp8SuTTyzU',
+    },
+    profileUrl: 'https://www.linkedin.com/in/jicajiao/',
+  },
+  {
+    name: 'Elba Vargas Figueroa',
+    title: 'Scrum Master & Agile Coach',
+    body: 'I confidently recommend Nicolas as a highly valuable professional for any company seeking a committed and proactive talent for their Front-end development team.',
+    photo: {
+      src: 'https://media.licdn.com/dms/image/v2/D4E35AQGXzNRLRI8Acg/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1725062851317?e=1733158800&v=beta&t=CPXRM5VSOerYaDLw6W1x7htsE6ID27SG6zPedmcvCKw',
+    },
+    profileUrl: 'https://www.linkedin.com/in/elba-vargas-figueroa/',
+  },
+  {
+    name: 'Nahuel Rodrìguez Alonso',
+    title: 'Web Developer',
+    body: 'I was fortunate to share projects and learn so much from him. He created a very positive and productive work environment.',
+    photo: {
+      src: 'https://media.licdn.com/dms/image/v2/C4E03AQEfPsnCUFnWCA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1638039342157?e=1738195200&v=beta&t=ARprRrothDnVZOnCq89YGs0rT5D_eVfb0NzUDEek1VI',
+    },
+    profileUrl: 'https://www.linkedin.com/in/nahuel-rodriguez-alonso-webdev-/',
+  },
+];
+---
+
+<section class='bg-gray-50'>
+  <div
+    class='mx-auto px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24'
+  >
+    <div
+      class='w-full mx-auto max-w-screen-xl items-end justify-between sm:flex sm:pe-6 lg:pe-8'
+    >
+      <h2 class='text-3xl font-bold text-left'>
+        Read trusted Linkedin<br />Recommendations received
+      </h2>
+
+      <div class='mt-8 flex gap-4 lg:mt-0'>
+        <button
+          aria-label='Previous slide'
+          id='keen-slider-previous'
+          class='rounded-full border border-brand p-3 text-brand transition hover:bg-brand hover:text-white'
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke-width='1.5'
+            stroke='currentColor'
+            class='size-5 rtl:rotate-180'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              d='M15.75 19.5L8.25 12l7.5-7.5'></path>
+          </svg>
+        </button>
+
+        <button
+          aria-label='Next slide'
+          id='keen-slider-next'
+          class='rounded-full border border border-brand p-3 text-brand transition hover:bg-brand hover:text-white'
+        >
+          <svg
+            class='size-5 rtl:rotate-180'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M9 5l7 7-7 7'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class='-mx-6 mt-8 lg:col-span-2 lg:mx-0'>
+      <div id='keen-slider' class='keen-slider'>
+        {
+          testimonials.map((testimonial) => (
+            <TestimonialCard
+              name={testimonial.name}
+              title={testimonial.title}
+              body={testimonial.body}
+              photo={testimonial.photo.src}
+              profileUrl={testimonial.profileUrl}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+<link
+  href='https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css'
+  rel='stylesheet'
+/>
+
+<script type='module' is:inline>
+  import KeenSlider from 'https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm';
+
+  const keenSlider = new KeenSlider(
+    '#keen-slider',
+    {
+      loop: true,
+      slides: {
+        origin: 'center',
+        perView: 1.25,
+        spacing: 16,
+      },
+      breakpoints: {
+        '(min-width: 1024px)': {
+          slides: {
+            origin: 'auto',
+            perView: 2.5,
+            spacing: 32,
+          },
+        },
+      },
+    },
+    []
+  );
+
+  const keenSliderPrevious = document.getElementById('keen-slider-previous');
+  const keenSliderNext = document.getElementById('keen-slider-next');
+
+  keenSliderPrevious.addEventListener('click', () => keenSlider.prev());
+  keenSliderNext.addEventListener('click', () => keenSlider.next());
+</script>
