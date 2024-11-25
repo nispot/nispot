@@ -1,5 +1,11 @@
 ---
 import LogoNispot from './LogoNispot.astro';
+export interface Props {
+  textColor?: 'white' | 'black';
+}
+
+const { textColor = 'black' } = Astro.props;
+const textClass = textColor === 'white' ? 'text-white' : 'text-black';
 ---
 
 <footer class='bg-gray'>
