@@ -1,40 +1,62 @@
 ---
+import Button from './ui/Button.astro';
+
 const projects = [
   {
-    title: 'Project 1',
-    description: 'This is a description of project 1',
+    title: 'Utag Marketing Agency',
+    description: 'Marketing Agency Website',
     image: 'utag.png',
-    link: '#',
+    link: 'https://utag.io/',
+    tagline: ['HTML', 'CSS', 'Javascript'],
+    repositoryUrl: '',
   },
   {
-    title: 'Project 2',
-    description: 'This is a description of project 2',
+    title: 'Alamo Argentina',
+    description: 'Next.js App for rent a car Company.',
     image: 'alamo.png',
-    link: '#',
+    link: 'https://www.alamoargentina.com.ar/',
+    tagline: ['nextJs', 'ReactJs', 'APIREST', 'HTML', 'CSS', 'Javascript'],
+    repositoryUrl: '',
   },
   {
-    title: 'Project 3',
-    description: 'This is a description of project 3',
+    title: 'Caviaroli',
+    description: 'Shopify Site. Design and development of custom theme.',
     image: 'caviaroli.png',
-    link: '#',
+    link: 'https://www.caviaroli.com/pages/nosotros',
+    tagline: [
+      'Figma',
+      'Shopify',
+      'Theme',
+      'HTML',
+      'CSS',
+      'Javascript',
+      'Ecommerce',
+    ],
+    repositoryUrl: '',
   },
   {
-    title: 'Project 4',
-    description: 'This is a description of project 4',
+    title: 'Molinos Florencia',
+    description: 'Corporate Website.',
     image: 'florencia.png',
-    link: '#',
+    link: 'https://molinosflorencia.com.ar/',
+    tagline: ['HTML', 'CSS', 'Javascript'],
+    repositoryUrl: '',
   },
   {
-    title: 'Project 5',
-    description: 'This is a description of project 5',
+    title: 'Sinteplast',
+    description: 'Brand Site. Frontend and Custom PHP Backend (CMS)',
     image: 'sinteplast.png',
-    link: '#',
+    link: 'https://www.sinteplast.com.ar/',
+    tagline: ['PHP', 'HireroomAPI', 'HTML', 'CSS', 'Javascript'],
+    repositoryUrl: '',
   },
   {
-    title: 'Project 6',
-    description: 'This is a description of project 6',
+    title: 'Sancor BB3',
+    description: 'Brand Wordpress Site. Custom Theme.',
     image: 'sancor.png',
-    link: '#',
+    link: 'https://www.sancorbebe3.com.ar/',
+    tagline: ['Wordpress', 'Theme', 'HTML', 'CSS', 'Javascript'],
+    repositoryUrl: '',
   },
 ];
 ---
@@ -45,15 +67,11 @@ const projects = [
       <p class='text-white text-3xl font-bold pt-10'>
         Take a look at my most<br /> impactful projects
       </p>
-      <!--       <div>
-        <Button text='View all projects' href='#' invert={true} />
-      </div> -->
     </div>
     <div class='grid gap-8'>
       {
         projects.map(
           (project, index) =>
-            // Agrupamos las imágenes de dos en dos
             index % 2 === 0 && (
               <div
                 class={`grid ${
@@ -62,20 +80,86 @@ const projects = [
                     : 'grid-cols-[58.5%_40.5%]'
                 } gap-4`}
               >
-                <div>
+                <div class='relative group'>
                   <img
                     src={`/images/portfolio/${project.image}`}
                     alt={project.title}
                     class='rounded-md w-full h-auto'
                   />
+                  <div class='absolute inset-0 bg-black bg-opacity-80 rounded-md flex flex-col p-2 md:p-10 items-start justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out'>
+                    <p class='text-brand text-md md:text-2xl font-bold mb-2'>
+                      {project.title}
+                    </p>
+                    <p class='text-white text-sm md:text-md mb-4'>
+                      {project.description}
+                    </p>
+                    <div class='flex gap-2 flex-wrap'>
+                      {project.tagline?.map((tag) => (
+                        <span class='text-xs md:text-xs bg-white text-brand px-2 py-1 md:px-4 md:py-2 rounded-full'>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div class='mt-4 self-end'>
+                      {project.link && (
+                        <Button
+                          href={project.link}
+                          text='visit website'
+                          white
+                        />
+                      )}
+                      {project.repositoryUrl && (
+                        <a
+                          href={project.repositoryUrl}
+                          target='_blank'
+                          class='text-white underline'
+                        >
+                          Code
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
                 {projects[index + 1] && (
-                  <div>
+                  <div class='relative group'>
                     <img
                       src={`/images/portfolio/${projects[index + 1].image}`}
                       alt={projects[index + 1].title}
                       class='rounded-md w-full h-auto'
                     />
+                    <div class='absolute inset-0 bg-black bg-opacity-80 rounded-lg flex flex-col p-10 items-start justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out'>
+                      <p class='text-brand text-md md:text-2xl font-bold mb-2'>
+                        {projects[index + 1].title}
+                      </p>
+                      <p class='text-white text-sm md:text-md mb-4'>
+                        {projects[index + 1].description}
+                      </p>
+                      <div class='flex gap-2 flex-wrap'>
+                        {projects[index + 1].tagline?.map((tag) => (
+                          <span class='text-xs bg-white text-brand font-medium px-4 py-2 rounded-full min-w-fit'>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div class='mt-4 self-end'>
+                        {projects[index + 1].link && (
+                          <Button
+                            href={project.link}
+                            text='visit website'
+                            white
+                          />
+                        )}
+                        {projects[index + 1].repositoryUrl && (
+                          <a
+                            href={projects[index + 1].repositoryUrl}
+                            target='_blank'
+                            class='text-white underline'
+                          >
+                            Code
+                          </a>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
