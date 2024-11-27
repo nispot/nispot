@@ -86,11 +86,13 @@ const projects = [
                     alt={project.title}
                     class='rounded-md w-full h-auto'
                     onclick="this.closest('.absolute').classList.remove('hidden'); stopPropagation()"
+                    ontouchstart="this.closest('.absolute').classList.remove('hidden'); stopPropagation()"
                   />
                   <div class='absolute w-[100vw] h-[50vh] -m-4 md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-80 rounded-md flex flex-col p-2 md:p-10 items-start justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out'>
                     <button
                       class='md:hidden w-full text-white flex justify-end text-lg font-bold'
                       onclick="this.closest('.absolute').classList.add('hidden'); stopPropagation()"
+                      ontouchstart="this.closest('.absolute').classList.add('hidden'); stopPropagation()"
                     >
                       X
                     </button>
