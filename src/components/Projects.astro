@@ -85,18 +85,23 @@ const projects = [
                     src={`/images/portfolio/${project.image}`}
                     alt={project.title}
                     class='rounded-md w-full h-auto'
-                    onclick="this.closest('.absolute').classList.remove('hidden'); stopPropagation()"
-                    ontouchstart="this.closest('.absolute').classList.remove('hidden'); stopPropagation()"
+                    onclick=''
                   />
-                  <div class='absolute w-[100vw] h-[50vh] -m-4 md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-80 rounded-md flex flex-col p-2 md:p-10 items-start justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out'>
-                    <button
-                      class='md:hidden w-full text-white flex justify-end text-lg font-bold'
-                      onclick="this.closest('.absolute').classList.add('hidden'); stopPropagation()"
-                      ontouchstart="this.closest('.absolute').classList.add('hidden'); stopPropagation()"
+                  <div
+                    id={`overlay${index}`}
+                    class='absolute w-[100vw] h-[50vh] -m-4 md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-90 md:bg-opacity-80 rounded-md flex flex-col p-10 md:p-10 items-start justify-between invisible group-hover:opacity-100 transition-opacity duration-300 ease-in-out'
+                  >
+                    <div
+                      class='                      md:hidden
+                      w-full
+                      text-white
+                      flex
+                      justify-end
+                      text-lg
+                      font-bold'
                     >
-                      X
-                    </button>
-
+                      <button onclick=''>X</button>
+                    </div>
                     <div>
                       <p class='text-brand text-md md:text-2xl font-bold mb-2'>
                         {project.title}
@@ -141,19 +146,28 @@ const projects = [
                       src={`/images/portfolio/${projects[index + 1].image}`}
                       alt={projects[index + 1].title}
                       class='rounded-md w-full h-auto'
-                      onclick="this.closest('.absolute').classList.remove('hidden'); stopPropagation()"
-                      ontouchstart="this.closest('.absolute').classList.remove('hidden'); stopPropagation()"
+                      onclick=''
                     />
                     <div
-                      class={`absolute w-[100vw] h-[50vh] ${index + 1 === 3 ? '-ml-[160%]' : '-ml-[82%]'} md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-80 rounded-lg flex flex-col p-10 items-start justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out`}
+                      id={`overlay${index + 1}`}
+                      class={`absolute w-[100vw] h-[50vh] ${index + 1 === 3 ? '-ml-[160%]' : '-ml-[82%]'} md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-80 rounded-lg flex flex-col p-10 items-start justify-between invisible group-hover:opacity-100 transition-opacity duration-300 ease-in-out`}
                     >
-                      <button
-                        class='md:hidden w-full text-white flex justify-end text-lg font-bold'
-                        onclick="this.closest('.absolute').classList.add('hidden'); stopPropagation()"
-                        ontouchstart="this.closest('.absolute').classList.add('hidden'); stopPropagation()"
+                      <div
+                        class='                      md:hidden
+                      w-full
+                      text-white
+                      flex
+                      justify-end
+                      text-lg
+                      font-bold'
                       >
-                        X
-                      </button>
+                        <button
+                          class='md:hidden w-full text-white flex justify-end text-lg font-bold'
+                          onclick="''"
+                        >
+                          X
+                        </button>
+                      </div>
                       <div>
                         <p class='text-brand text-md md:text-2xl font-bold mb-2'>
                           {projects[index + 1].title}
@@ -199,3 +213,40 @@ const projects = [
     </div>
   </div>
 </section>
+
+<script>
+  // Manejadores dinámicos de eventos
+  document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('img[onclick]');
+    images.forEach((img, index) => {
+      img.addEventListener('click', (event) => showOverlay(event, index));
+    });
+
+    const buttons = document.querySelectorAll('button[onclick]');
+    buttons.forEach((btn, index) => {
+      btn.addEventListener('click', (event) => hideOverlay(event, index));
+    });
+  });
+  function showOverlay(event: Event, index: number) {
+    event.stopPropagation();
+    hideAllOverlays();
+    const overlay = document.getElementById(`overlay${index}`);
+    if (overlay) {
+      overlay.classList.remove('invisible');
+    }
+  }
+  function hideOverlay(event: Event, index: number) {
+    event.stopPropagation();
+    const overlay = document.getElementById(`overlay${index}`);
+    if (overlay) {
+      overlay.classList.add('invisible');
+    }
+  }
+
+  function hideAllOverlays() {
+    const overlays = document.querySelectorAll('[id^="overlay"]');
+    overlays.forEach((overlay) => {
+      overlay.classList.add('invisible');
+    });
+  }
+</script>
