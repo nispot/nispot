@@ -86,10 +86,12 @@ const projects = [
                     alt={project.title}
                     class='rounded-md w-full h-auto'
                     onclick=''
+                    onmouseover=''
                   />
                   <div
                     id={`overlay${index}`}
-                    class='absolute w-[100vw] h-[50vh] -m-4 md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-90 md:bg-opacity-80 rounded-md flex flex-col p-10 md:p-10 items-start justify-between invisible group-hover:opacity-100 transition-opacity duration-300 ease-in-out'
+                    onmouseout=''
+                    class='absolute w-[100vw] h-[50vh] -m-4 md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-90 md:bg-opacity-80 rounded-md flex flex-col p-10 md:p-10 items-start justify-between invisible group-hover:opacity-100 transition-visibility duration-100 ease-in-out'
                   >
                     <div
                       class='                      md:hidden
@@ -147,10 +149,12 @@ const projects = [
                       alt={projects[index + 1].title}
                       class='rounded-md w-full h-auto'
                       onclick=''
+                      onmouseover=''
                     />
                     <div
                       id={`overlay${index + 1}`}
-                      class={`absolute w-[100vw] h-[50vh] ${index + 1 === 3 ? '-ml-[160%]' : '-ml-[82%]'} md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-80 rounded-lg flex flex-col p-10 items-start justify-between invisible group-hover:opacity-100 transition-opacity duration-300 ease-in-out`}
+                      onmouseout=''
+                      class={`absolute w-[100vw] h-[50vh] ${index + 1 === 3 ? '-ml-[160%]' : '-ml-[82%]'} md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-80 rounded-lg flex flex-col p-10 items-start justify-between invisible group-hover:opacity-100 transition-visibility duration-100 ease-in-out`}
                     >
                       <div
                         class='                      md:hidden
@@ -163,7 +167,7 @@ const projects = [
                       >
                         <button
                           class='md:hidden w-full text-white flex justify-end text-lg font-bold'
-                          onclick="''"
+                          onclick=''
                         >
                           X
                         </button>
@@ -220,6 +224,14 @@ const projects = [
     const images = document.querySelectorAll('img[onclick]');
     images.forEach((img, index) => {
       img.addEventListener('click', (event) => showOverlay(event, index));
+    });
+
+    images.forEach((img, index) => {
+      img.addEventListener('mouseover', (event) => showOverlay(event, index));
+    });
+    const overlays = document.querySelectorAll('[id^="overlay"]');
+    overlays.forEach((img, index) => {
+      img.addEventListener('mouseout', (event) => hideOverlay(event, index));
     });
 
     const buttons = document.querySelectorAll('button[onclick]');
