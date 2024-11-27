@@ -1,0 +1,60 @@
+---
+interface ModalProps {
+  selectedProject: {
+    title: string;
+    description: string;
+    tagline: string[];
+    link: string;
+  } | null; // Puede ser null cuando no hay proyecto seleccionado
+}
+
+const { selectedProject } = Astro.props as ModalProps;
+---
+
+<div
+  id='project-modal'
+  class={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex items-center justify-center ${
+    selectedProject ? '' : 'hidden'
+  }`}
+>
+  <div class='bg-white rounded-lg p-6 max-w-lg w-full relative'>
+    <button class='absolute top-4 right-4 text-black' onclick='closeModal()'>
+      &times;
+    </button>
+    {
+      selectedProject && (
+        <div>
+          <h2 class='text-2xl font-bold mb-4'>{selectedProject.title}</h2>
+          <p class='text-gray-700'>{selectedProject.description}</p>
+          <div class='flex gap-2 mt-4'>
+            {selectedProject.tagline.map((tag) => (
+              <span class='text-xs bg-gray-200 px-2 py-1 rounded-full'>
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div class='mt-6'>
+            {selectedProject.link && (
+              <a
+                href={selectedProject.link}
+                target='_blank'
+                class='text-blue-500 underline mr-4'
+              >
+                Visit Website
+              </a>
+            )}
+          </div>
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<script>
+  function closeModal() {
+    const modal = document.getElementById('project-modal');
+    if (modal) {
+      modal.classList.add('hidden');
+    }
+  }
+</script>
