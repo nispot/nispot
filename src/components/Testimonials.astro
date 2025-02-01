@@ -3,11 +3,20 @@ import TestimonialCard from './ui/TestimonialCard.astro';
 
 const testimonials = [
   {
+    name: 'Carlos Bustillo',
+    title: 'Data Scientist || Machine Learning Engineer',
+    body: 'Nico is an outstanding frontend developer capable of creating incredible projects :). He has a strong foundation in design implementation, ensuring great UX/UI, and can develop the entire frontend of a product. He also explains concepts very clearly—I learned a lot from him about design and frontend development..',
+    photo: {
+      src: 'https://media.licdn.com/dms/image/v2/D4D03AQFbna-hzEzKsQ/profile-displayphoto-shrink_400_400/B4DZSUVd4NH0Ak-/0/1737655443817?e=1743638400&v=beta&t=7n_Au_thl-I3C3vsniR2w-BmKTu9DakTltKHS2RY9Hg',
+    },
+    profileUrl: 'https://www.linkedin.com/in/carlos-bustillo/',
+  },
+  {
     name: 'Matías Nuñez',
     title: 'UX Lead',
     body: 'His ability to identify issues and develop evidence-based action plans would be an invaluable asset to any project or company.',
     photo: {
-      src: 'https://media.licdn.com/dms/image/v2/D4D03AQGWGL2P_sbBMA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1689286152469?e=1738195200&v=beta&t=OB5W2xBi3NaPaOKF8qowQZj8aYNmF5HWq6O3G1RjEL4',
+      src: 'https://media.licdn.com/dms/image/v2/D4D03AQGWGL2P_sbBMA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689286152470?e=1743638400&v=beta&t=4M3cpaIukUXcRODHCm7JM_m7TLlp9GI21YALXm4Q90w',
     },
     profileUrl: 'https://www.linkedin.com/in/uxmato/',
   },
@@ -16,7 +25,7 @@ const testimonials = [
     title: 'Sr. UX Engineer',
     body: 'A developer with excellent technical skills, but also someone who can lead and collaborate in a way that makes him an incredible ally.',
     photo: {
-      src: 'https://media.licdn.com/dms/image/v2/C4D03AQEtEWt1RoTPpg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1657425480631?e=1738195200&v=beta&t=PbdBVK-3WDmTmVULcMvRQ4kBf4J08FFfQNlIpD-6Xa4',
+      src: 'https://media.licdn.com/dms/image/v2/C4D03AQEtEWt1RoTPpg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1657425480631?e=1743638400&v=beta&t=Hik98VyQF9g2NRSRGRpgNo05MdfqdnLzoQ_MA4JVHeM',
     },
     profileUrl: 'https://www.linkedin.com/in/jose-silvaart/',
   },
@@ -25,7 +34,7 @@ const testimonials = [
     title: 'Software Developer',
     body: 'Few people leave the impression he left on me. As a developer, he helped me grow tremendously. He has exceptional skills for teaching and problem-solving.',
     photo: {
-      src: 'https://media.licdn.com/dms/image/v2/D4E03AQGXN6u1k5kuQg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1718303004864?e=1738195200&v=beta&t=qtOHo6wZVpDvQv5OFWaSe7ufQiRNSt-uDSqV-hDC6hs',
+      src: 'https://media.licdn.com/dms/image/v2/D4E03AQGXN6u1k5kuQg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718289773722?e=1743638400&v=beta&t=hmS58-uYwoPDCs9Idst_lBUi_P1B29O6qUWuTnwRRNM',
     },
     profileUrl: 'https://www.linkedin.com/in/soriagorgoroso/',
   },
@@ -34,7 +43,7 @@ const testimonials = [
     title: 'Product Designer | Design Systems',
     body: 'I highlight his proactive attitude and constant effort to achieve excellence in digital products, as well as his ability to foster a great team environment.',
     photo: {
-      src: 'https://media.licdn.com/dms/image/v2/C4D03AQEkVguuOJZc6g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1635532019549?e=1738195200&v=beta&t=SyHEgFHSshOu_W4N08q6GrhhJhjFXbL1rPp8SuTTyzU',
+      src: 'https://media.licdn.com/dms/image/v2/C4D03AQEkVguuOJZc6g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1635532019549?e=1743638400&v=beta&t=HmpHY2j_CEUjfnuyAjAQ3ixzsQlC1XOyMJqsNyl_ZPQ',
     },
     profileUrl: 'https://www.linkedin.com/in/jicajiao/',
   },
@@ -43,7 +52,7 @@ const testimonials = [
     title: 'Scrum Master & Agile Coach',
     body: 'I confidently recommend Nicolas as a highly valuable professional for any company seeking a committed and proactive talent for their Front-end development team.',
     photo: {
-      src: 'https://media.licdn.com/dms/image/v2/D4E35AQGXzNRLRI8Acg/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1725062851317?e=1733158800&v=beta&t=CPXRM5VSOerYaDLw6W1x7htsE6ID27SG6zPedmcvCKw',
+      src: 'https://media.licdn.com/dms/image/v2/D4E35AQGXzNRLRI8Acg/profile-framedphoto-shrink_100_100/profile-framedphoto-shrink_100_100/0/1725062851272?e=1738429200&v=beta&t=a4YrkGe9-ws7GXhNp0wfgn0OfQ5zOH2A813dIHlK8Vc',
     },
     profileUrl: 'https://www.linkedin.com/in/elba-vargas-figueroa/',
   },
@@ -52,7 +61,7 @@ const testimonials = [
     title: 'Web Developer',
     body: 'I was fortunate to share projects and learn so much from him. He created a very positive and productive work environment.',
     photo: {
-      src: 'https://media.licdn.com/dms/image/v2/C4E03AQEfPsnCUFnWCA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1638039342157?e=1738195200&v=beta&t=ARprRrothDnVZOnCq89YGs0rT5D_eVfb0NzUDEek1VI',
+      src: 'https://media.licdn.com/dms/image/v2/C4E03AQEfPsnCUFnWCA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1638039342157?e=1743638400&v=beta&t=BqAgpGX8A6GY6jKbP9HbrwoxAb3ShUa5ztD7xbwlXQM',
     },
     profileUrl: 'https://www.linkedin.com/in/nahuel-rodriguez-alonso-webdev-/',
   },
