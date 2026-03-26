@@ -1,25 +1,26 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import ProcessCard from './ui/ProcessCard.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const steps = [
   {
-    title: 'Idea & Planning',
-    description:
-      'I start by defining clear goals and understanding the users to build effective solutions.',
+    title: t('process.step1.title'),
+    description: t('process.step1.description'),
   },
   {
-    title: 'Design & Prototyping',
-    description:
-      'I transform ideas into wireframes and functional designs that guide development.',
+    title: t('process.step2.title'),
+    description: t('process.step2.description'),
   },
   {
-    title: 'Development & Refinement',
-    description:
-      'I build, test, and improve the product iteratively, incorporating user feedback along the way.',
+    title: t('process.step3.title'),
+    description: t('process.step3.description'),
   },
   {
-    title: 'Testing & Quality',
-    description:
-      'I ensure reliability and usability by running thorough tests before launch.',
+    title: t('process.step4.title'),
+    description: t('process.step4.description'),
   },
 ];
 ---
@@ -27,9 +28,7 @@ const steps = [
 <section
   class='w-full mx-auto max-w-screen-xl mt-10 mb-10 px-4 sm:px-6 md:px-8 lg:px-10'
 >
-  <h2 class='text-3xl font-bold mb-4 text-center mt-10 mb-10'>
-    Bringing Ideas to Life Through<br />Creativity
-  </h2>
+  <h2 class='text-3xl font-bold mb-4 text-center mt-10 mb-10' set:html={t('process.title')} />
   <ul
     class='grid grid-cols-1 md:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4'
   >

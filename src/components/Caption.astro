@@ -1,5 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section
@@ -12,9 +15,7 @@
     <p
       class='text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-black font-bold m-10 mb-4'
     >
-      Creativity isn’t just about visual design—it’s about finding innovative
-      solutions, writing efficient and clever code, and turning challenges into
-      opportunities to build something extraordinary.
+      {t('caption.text')}
     </p>
   </div>
 </section>

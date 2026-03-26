@@ -1,11 +1,16 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import LogoNispot from './LogoNispot.astro';
+
 export interface Props {
   textColor?: 'white' | 'black';
 }
 
 const { textColor = 'black' } = Astro.props;
 const textClass = textColor === 'white' ? 'text-white' : 'text-black';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer class='bg-gray'>
@@ -14,7 +19,7 @@ const textClass = textColor === 'white' ? 'text-white' : 'text-black';
   >
     <LogoNispot textColor='white' />
     <div class='text-white mt-2 md:mt-0'>
-      Building dreams, one line of code at a time | CDMX - 2024
+      {t('footer.copyright')}
     </div>
   </div>
 </footer>

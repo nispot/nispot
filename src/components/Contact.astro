@@ -1,12 +1,19 @@
-<section class='bg-black-900 px-4 sm:px-6 md:px-8 lg:px-10'>
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id='contact' class='bg-black-900 px-4 sm:px-6 md:px-8 lg:px-10'>
   <div
     class='w-full mx-auto max-w-screen-xl pt-10 pb-10 md:flex md:items-start md:justify-between flex-col'
   >
     <div
       class='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold pt-10 pb-10'
     >
-      LET´S WORK IN <br />
-      <span class='text-brand'>TOGETHER</span>
+      {t('contact.title')} <br />
+      <span class='text-brand'>{t('contact.subtitle')}</span>
     </div>
     <div class='flex w-full justify-end items-center text-white pb-10'>
       <svg

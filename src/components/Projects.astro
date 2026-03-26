@@ -1,5 +1,9 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import Button from './ui/Button.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const projects = [
   {
@@ -61,12 +65,10 @@ const projects = [
 ];
 ---
 
-<section class='bg-black-900 px-4 sm:px-6 md:px-8 lg:px-10'>
+<section id='projects' class='bg-black-900 px-4 sm:px-6 md:px-8 lg:px-10'>
   <div class='w-full mx-auto max-w-screen-xl pt-10 pb-10 flex flex-col'>
     <div class='flex items-end justify-between pb-10'>
-      <p class='text-white text-3xl font-bold pt-10'>
-        Take a look at my most<br /> impactful projects
-      </p>
+      <p class='text-white text-3xl font-bold pt-10' set:html={t('projects.title')} />
     </div>
     <div class='grid gap-8'>
       {
@@ -84,14 +86,11 @@ const projects = [
                   <img
                     src={`/images/portfolio/${project.image}`}
                     alt={project.title}
-                    class='rounded-md w-full h-auto'
-                    onclick=''
-                    onmouseover=''
+                    class='rounded-md w-full h-auto cursor-pointer'
                   />
                   <div
                     id={`overlay${index}`}
-                    onmouseout=''
-                    class='absolute w-[100vw] h-[50vh] -m-4 md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-90 md:bg-opacity-80 rounded-md flex flex-col p-10 md:p-10 items-start justify-between invisible group-hover:opacity-100 transition-visibility duration-100 ease-in-out'
+                    class='absolute w-[100vw] h-[50vh] -m-4 md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-90 md:bg-opacity-80 rounded-md flex flex-col p-10 md:p-10 items-start justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out'
                   >
                     <div
                       class='                      md:hidden
@@ -126,7 +125,7 @@ const projects = [
                           <Button
                             href={project.link}
                             target='_blank'
-                            text='visit website'
+                            text={t('projects.visit_website')}
                             white
                           />
                         )}
@@ -136,7 +135,7 @@ const projects = [
                             target='_blank'
                             class='text-white underline'
                           >
-                            Code
+                            {t('projects.code')}
                           </a>
                         )}
                       </div>
@@ -148,14 +147,11 @@ const projects = [
                     <img
                       src={`/images/portfolio/${projects[index + 1].image}`}
                       alt={projects[index + 1].title}
-                      class='rounded-md w-full h-auto'
-                      onclick=''
-                      onmouseover=''
+                      class='rounded-md w-full h-auto cursor-pointer'
                     />
                     <div
                       id={`overlay${index + 1}`}
-                      onmouseout=''
-                      class={`absolute w-[100vw] h-[50vh] ${index + 1 === 3 ? '-ml-[160%]' : '-ml-[82%]'} md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-80 rounded-lg flex flex-col p-10 items-start justify-between invisible group-hover:opacity-100 transition-visibility duration-100 ease-in-out`}
+                      class={`absolute w-[100vw] h-[50vh] ${index + 1 === 3 ? '-ml-[160%]' : '-ml-[82%]'} md:w-auto md:h-auto md:-m-0 z-50 md:z-0 inset-0 bg-black bg-opacity-80 rounded-lg flex flex-col p-10 items-start justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out`}
                     >
                       <div
                         class='                      md:hidden
@@ -194,7 +190,7 @@ const projects = [
                             <Button
                               href={projects[index + 1].link}
                               target='_blank'
-                              text='visit website'
+                              text={t('projects.visit_website')}
                               white
                             />
                           )}
@@ -204,7 +200,7 @@ const projects = [
                               target='_blank'
                               class='text-white underline'
                             >
-                              Code
+                              {t('projects.code')}
                             </a>
                           )}
                         </div>
@@ -220,47 +216,4 @@ const projects = [
   </div>
 </section>
 
-<script>
-  // Manejadores dinámicos de eventos
-  document.addEventListener('DOMContentLoaded', () => {
-    const images = document.querySelectorAll('img[onclick]');
-    images.forEach((img, index) => {
-      img.addEventListener('click', (event) => showOverlay(event, index));
-    });
 
-    images.forEach((img, index) => {
-      img.addEventListener('mouseover', (event) => showOverlay(event, index));
-    });
-    const overlays = document.querySelectorAll('[id^="overlay"]');
-    overlays.forEach((img, index) => {
-      img.addEventListener('mouseout', (event) => hideOverlay(event, index));
-    });
-
-    const buttons = document.querySelectorAll('button[onclick]');
-    buttons.forEach((btn, index) => {
-      btn.addEventListener('click', (event) => hideOverlay(event, index));
-    });
-  });
-  function showOverlay(event: Event, index: number) {
-    event.stopPropagation();
-    hideAllOverlays();
-    const overlay = document.getElementById(`overlay${index}`);
-    if (overlay) {
-      overlay.classList.remove('invisible');
-    }
-  }
-  function hideOverlay(event: Event, index: number) {
-    event.stopPropagation();
-    const overlay = document.getElementById(`overlay${index}`);
-    if (overlay) {
-      overlay.classList.add('invisible');
-    }
-  }
-
-  function hideAllOverlays() {
-    const overlays = document.querySelectorAll('[id^="overlay"]');
-    overlays.forEach((overlay) => {
-      overlay.classList.add('invisible');
-    });
-  }
-</script>

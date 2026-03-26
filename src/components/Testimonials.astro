@@ -1,5 +1,9 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import TestimonialCard from './ui/TestimonialCard.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const testimonials = [
   {
@@ -75,9 +79,7 @@ const testimonials = [
     <div
       class='w-full mx-auto max-w-screen-xl items-end justify-between sm:flex sm:pe-6 lg:pe-8'
     >
-      <h2 class='text-3xl font-bold text-left'>
-        Read trusted Linkedin<br />Recommendations received
-      </h2>
+      <h2 class='text-3xl font-bold text-left' set:html={t('testimonials.title')} />
 
       <div class='mt-8 flex gap-4 lg:mt-0'>
         <button

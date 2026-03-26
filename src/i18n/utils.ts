@@ -6,6 +6,14 @@ export function getLangFromUrl(url: URL) {
   return defaultLang;
 }
 
+export function getLangFromDocument(): keyof typeof ui {
+  if (typeof document !== 'undefined') {
+    const lang = document.documentElement.lang;
+    if (lang && lang in ui) return lang as keyof typeof ui;
+  }
+  return defaultLang;
+}
+
 export function useTranslations(lang: keyof typeof ui) {
   return function t(key: keyof (typeof ui)[typeof defaultLang]) {
     return (
