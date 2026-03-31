@@ -9,9 +9,13 @@ const t = useTranslations(lang);
   <div
     class='w-full mx-auto max-w-screen-xl pt-2 pb-2 md:pt-4 md:pb-4 lg:pt-10 lg:pb-10 flex items-start justify-between flex-col'
   >
-    <div class='w-full'>
-      <img src='/images/hero1.svg' width='100%' alt='hero' />
+    <div class='w-full' id='hero-top'>
+      <div id='hero-art-wrap' class='relative'>
+        <div id='hero-svg-mount' class='w-full'></div>
+        <img id='hero-art-fallback' src='/images/hero1.svg' width='100%' alt='hero' />
+      </div>
       <p
+        id='hero-role'
         class='text-black text-sm md:text-xl lg:text-3xl font-bold pt-2 pb-2 md:pt-4 md:pb-4 lg:pt-10 lg:pb-10 text-keft md:text-center'
       >
         {t('hero.role')}
@@ -70,3 +74,145 @@ const t = useTranslations(lang);
     </div>
   </div>
 </section>
+<script>
+  import { gsap } from 'gsap';
+
+  const loadInlineHeroSvg = async () => {
+    const mount = document.getElementById('hero-svg-mount');
+    const fallback = document.getElementById('hero-art-fallback');
+    if (!mount || mount.dataset.inlineLoaded === 'true') return null;
+
+    try {
+      const response = await fetch('/images/hero1.svg');
+      if (!response.ok) return null;
+      const svgText = await response.text();
+      const doc = new DOMParser().parseFromString(svgText, 'image/svg+xml');
+      const svg = doc.querySelector('svg');
+      if (!svg) return null;
+
+      svg.setAttribute('id', 'hero-art');
+      svg.setAttribute('width', '100%');
+      svg.setAttribute('height', 'auto');
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      svg.classList.add('hero-svg-inline');
+      svg.style.display = 'block';
+      svg.style.width = '100%';
+      svg.style.height = 'auto';
+
+      mount.appendChild(svg);
+      mount.dataset.inlineLoaded = 'true';
+      if (fallback) fallback.style.display = 'none';
+      return svg;
+    } catch {
+      return null;
+    }
+  };
+
+  const initHeroAnimation = () => {
+    const top = document.getElementById('hero-top');
+    const artWrap = document.getElementById('hero-art-wrap');
+    const art =
+      document.getElementById('hero-art') ||
+      document.getElementById('hero-art-fallback');
+    const role = document.getElementById('hero-role');
+
+    if (!top || !artWrap || !art || !role) return;
+    if (top.dataset.animated === 'true') return;
+    top.dataset.animated = 'true';
+
+    gsap.set([artWrap, role], { willChange: 'transform, opacity' });
+
+    const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+    tl.fromTo(
+      artWrap,
+      { opacity: 0, y: 32, scale: 0.97 },
+      { opacity: 1, y: 0, scale: 1, duration: 1.05 }
+    ).fromTo(role, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.55 }, '-=0.45');
+
+    gsap.to(artWrap, {
+      y: -10,
+      rotation: -0.35,
+      duration: 2.6,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+    });
+
+    const onMove = (event: MouseEvent) => {
+      const rect = artWrap.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 18;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 14;
+      gsap.to(art, {
+        x,
+        y,
+        rotation: x * 0.08,
+        duration: 0.32,
+        ease: 'power2.out',
+      });
+    };
+
+    const resetMove = () => {
+      gsap.to(art, { x: 0, y: 0, rotation: 0, duration: 0.45, ease: 'power2.out' });
+    };
+
+    if (window.matchMedia('(hover: hover)').matches) {
+      artWrap.addEventListener('mousemove', onMove);
+      artWrap.addEventListener('mouseleave', resetMove);
+    }
+
+    // If we have inline SVG paths, animate them in layered waves.
+    if (art instanceof SVGSVGElement) {
+      const paths = Array.from(art.querySelectorAll('path'));
+      if (paths.length) {
+        const bandA = paths.slice(0, 22);
+        const bandB = paths.slice(22, 45);
+        const bandC = paths.slice(45);
+
+        gsap.fromTo(
+          paths,
+          { opacity: 0, y: 14 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.95,
+            stagger: { each: 0.011, from: 'center' },
+            ease: 'power2.out',
+          }
+        );
+
+        gsap.to(bandA, {
+          y: -4.2,
+          duration: 3.2,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut',
+        });
+        gsap.to(bandB, {
+          y: 3.6,
+          duration: 3.7,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut',
+        });
+        gsap.to(bandC, {
+          y: -2.8,
+          duration: 4.1,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut',
+        });
+
+      }
+    }
+  };
+
+  const setupHero = async () => {
+    await loadInlineHeroSvg();
+    initHeroAnimation();
+  };
+
+  document.addEventListener('astro:page-load', setupHero);
+  if (document.readyState !== 'loading') {
+    setupHero();
+  }
+</script>

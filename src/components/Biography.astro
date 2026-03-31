@@ -9,9 +9,9 @@ const t = useTranslations(lang);
 
 <section
   id='about'
-  class='w-full mx-auto max-w-screen-xl grid grid-cols-[100%] md:grid-cols-[65%_35%] lg:grid-cols-[60%_40%] mt-5 mb-5 px-4 sm:px-6 md:px-8 lg:px-10'
+  class='w-full mx-auto max-w-screen-xl grid grid-cols-[100%] min-[1042px]:grid-cols-[65%_35%] lg:grid-cols-[60%_40%] mt-5 mb-5 px-4 sm:px-6 md:px-8 lg:px-10'
 >
-  <div class='md:w-[90%] lg:w-[80%] xl:w-[70%]'>
+  <div class='min-[1042px]:w-[90%] lg:w-[80%] xl:w-[70%]'>
     <h2 class='text-3xl font-bold mb-4'>{t('bio.title')}</h2>
     <p class='text-black font-medium text-left mb-5'>{t('bio.greeting')}</p>
     <p class='text-black font-medium text-left mb-5'>
@@ -33,7 +33,127 @@ const t = useTranslations(lang);
     />
   </div>
 
-  <div class='flex justify-end'>
-    <img src='/images/retro-pc.svg' alt='hero' width='100%' />
+  <div class='flex justify-end relative' id='retro-pc-wrap'>
+    <img id='retro-pc' src='/images/retro-pc.svg' alt='hero' width='100%' />
+    <div id='retro-screen-overlay' class='pointer-events-none'>
+      <pre id='retro-code-lines' aria-hidden='true'></pre>
+      <span class='retro-caret' aria-hidden='true'></span>
+    </div>
   </div>
 </section>
+
+<script>
+  const initRetroPcScreenCode = () => {
+    const wrap = document.getElementById('retro-pc-wrap');
+    const codeTarget = document.getElementById('retro-code-lines');
+    if (!wrap || !codeTarget) return;
+    if (wrap.dataset.animated === 'true') return;
+    wrap.dataset.animated = 'true';
+
+    const lines = [
+      'const monitor = "retro-pc";',
+      'let frame = 0;',
+      'while (rendering) {',
+      '  frame += 1;',
+      '  optimize("ux", "performance");',
+      '  if (frame % 12 === 0) shipUpdate();',
+      '}',
+    ];
+
+    let lineIndex = 0;
+    let charIndex = 0;
+    let content = '';
+
+    const typeNext = () => {
+      if (lineIndex >= lines.length) {
+        setTimeout(() => {
+          lineIndex = 0;
+          charIndex = 0;
+          content = '';
+          codeTarget.textContent = '';
+          typeNext();
+        }, 900);
+        return;
+      }
+
+      const line = lines[lineIndex];
+      if (charIndex < line.length) {
+        content += line[charIndex];
+        charIndex += 1;
+        codeTarget.textContent = content;
+        setTimeout(typeNext, 22);
+      } else {
+        content += '\n';
+        codeTarget.textContent = content;
+        lineIndex += 1;
+        charIndex = 0;
+        setTimeout(typeNext, 140);
+      }
+    };
+
+    typeNext();
+  };
+
+  document.addEventListener('astro:page-load', initRetroPcScreenCode);
+  if (document.readyState !== 'loading') {
+    initRetroPcScreenCode();
+  }
+</script>
+
+<style>
+  #retro-screen-overlay {
+    position: absolute;
+    left: 19.5%;
+    top: 25%;
+    width: 34.5%;
+    height: 25%;
+    border-radius: 9px;
+    overflow: hidden;
+    padding: 6px 8px;
+    transform: rotate(14deg);
+    transform-origin: center center;
+    background: rgba(7, 11, 10, 0.28);
+    box-shadow: inset 0 0 0 1px rgba(125, 211, 206, 0.1);
+  }
+
+  #retro-code-lines {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    font-size: clamp(7px, 0.7vw, 11px);
+    line-height: 1.25;
+    color: rgba(125, 211, 206, 0.86);
+    text-shadow: 0 0 7px rgba(125, 211, 206, 0.25);
+    white-space: pre-wrap;
+  }
+
+  .retro-caret {
+    display: inline-block;
+    width: 7px;
+    height: 1em;
+    background: rgba(125, 211, 206, 0.8);
+    vertical-align: text-bottom;
+    animation: retro-blink 1s steps(1) infinite;
+  }
+
+  @keyframes retro-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #retro-screen-overlay {
+      top: 28%;
+      height: 22%;
+      padding: 5px 7px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #retro-screen-overlay {
+      top: 30%;
+      height: 20%;
+      padding: 4px 6px;
+    }
+  }
+</style>
