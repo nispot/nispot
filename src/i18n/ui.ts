@@ -25,19 +25,19 @@ export const ui = {
     'bio.paragraph4': "Let's connect!",
     'bio.resume': 'Resume',
     'process.title':
-      'Bringing Ideas to Life Through<br />Creativity',
-    'process.step1.title': 'Idea & Planning',
+      'From Idea to Ship<br />in the Age of Augmented Dev',
+    'process.step1.title': 'Intent & constraints',
     'process.step1.description':
-      'I start by defining clear goals and understanding the users to build effective solutions.',
-    'process.step2.title': 'Design & Prototyping',
+      'I lock goals, users, and non‑negotiables first—so AI and agents amplify a direction humans already own.',
+    'process.step2.title': 'Shape & prototype',
     'process.step2.description':
-      'I transform ideas into wireframes and functional designs that guide development.',
-    'process.step3.title': 'Development & Refinement',
+      'Sketches to flows fast: AI and design tools for speed, humans for taste, trade‑offs, and what “good” means.',
+    'process.step3.title': 'Build with agents',
     'process.step3.description':
-      'I build, test, and improve the product iteratively, incorporating user feedback along the way.',
-    'process.step4.title': 'Testing & Quality',
+      'Agent‑assisted coding for velocity—always with architecture, review, and ownership in the loop, not blind autogen.',
+    'process.step4.title': 'Validate & ship',
     'process.step4.description':
-      'I ensure reliability and usability by running thorough tests before launch.',
+      'Automation plus real QA: catch what models still miss—reliability, accessibility, edge cases—then iterate from feedback.',
     'projects.title':
       "Take a look at my most<br /> impactful projects",
     'projects.visit_website': 'visit website',
@@ -96,19 +96,19 @@ export const ui = {
     'bio.paragraph4': '¡Conectemos!',
     'bio.resume': 'CV',
     'process.title':
-      'Dando Vida a las Ideas a Través de la<br />Creatividad',
-    'process.step1.title': 'Idea y Planificación',
+      'De la idea al lanzamiento<br />en la era del dev aumentado',
+    'process.step1.title': 'Intención y límites',
     'process.step1.description':
-      'Comienzo definiendo metas claras y entendiendo a los usuarios para construir soluciones efectivas.',
-    'process.step2.title': 'Diseño y Prototipado',
+      'Anclo metas, usuarios y lo que no se negocia: la IA amplifica una dirección que sigue siendo humana.',
+    'process.step2.title': 'Forma y prototipo',
     'process.step2.description':
-      'Transformo ideas en wireframes y diseños funcionales que guían el desarrollo.',
-    'process.step3.title': 'Desarrollo y Refinamiento',
+      'Del boceto al flujo rápido: herramientas e IA para velocidad; criterio humano para gusto y trade‑offs.',
+    'process.step3.title': 'Construir con agentes',
     'process.step3.description':
-      'Construyo, pruebo y mejoro el producto iterativamente, incorporando retroalimentación del usuario en el camino.',
-    'process.step4.title': 'Pruebas y Calidad',
+      'Código con agentes para ir más rápido—siempre con arquitectura, revisión y dueño claro, sin autogenerar a ciegas.',
+    'process.step4.title': 'Validar y publicar',
     'process.step4.description':
-      'Aseguro confiabilidad y usabilidad ejecutando pruebas exhaustivas antes del lanzamiento.',
+      'Automatización + QA real: lo que los modelos aún fallan—fiabilidad, accesibilidad, casos borde—y mejora con feedback.',
     'projects.title':
       'Echa un vistazo a mis proyectos<br /> más impactantes',
     'projects.visit_website': 'visitar sitio',
