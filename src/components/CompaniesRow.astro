@@ -1,86 +1,288 @@
-<section class='bg-black-900 mt-10 mb-10 overflow-hidden'>
-  <div class='marquee flex items-center justify-around min-w-[1720px]'>
-    <div>
-      <img src='/images/companies/globant.svg' alt='hero' width='100%' />
+---
+const companies = [
+  {
+    name: 'Monetate',
+    logo: '/images/companies/monetate-official.svg',
+    url: 'https://monetate.com/',
+    position: 'Frontend Specialist',
+    duration: 'Jul 2025 - Actual · 9 meses',
+    location: 'Ciudad de México, México · En remoto',
+    summary: 'Plataforma de Optimización de Experiencias con IA. Personalización, Experimentación y ML.',
+    height: 28,
+  },
+  {
+    name: 'AccelOne',
+    logo: '/images/companies/accelone-dark.png',
+    url: 'https://accelone.com/',
+    position: 'Senior Frontend Developer',
+    duration: 'Jul 2025 - Actual · 9 meses',
+    location: 'Ciudad de México, México · En remoto',
+    summary: 'Desarrollo frontend con React, TypeScript y implementación de mejores prácticas.',
+    height: 34,
+  },
+  {
+    name: 'Global Hitss',
+    logo: '/images/companies/global-hitss-official.png',
+    url: 'https://globalhitss.com/',
+    position: 'Frontend Tech Lead - React Js',
+    duration: 'Dic 2024 - Jun 2025 · 7 meses',
+    location: 'Ciudad de México, México · Híbrido',
+    summary: 'Lideré equipo de 8 personas en entorno agile para Claro Video global. Revisiones de código y mentoría.',
+    height: 40,
+  },
+  {
+    name: 'Claro Video',
+    logo: '/images/companies/clarovideo-official.svg',
+    url: 'https://www.clarovideo.com/',
+    position: 'Frontend Tech Lead',
+    duration: '2024 - 2025',
+    location: 'México · Híbrido',
+    summary: 'Lideré equipo para Claro Video a nivel global.',
+    height: 32,
+  },
+  {
+    name: 'Cencosud',
+    logo: '/images/companies/cencosud.svg',
+    url: 'https://www.cencosud.com/',
+    position: 'Sr. Frontend Developer',
+    duration: 'Abr 2022 - Abr 2023 · 1 año',
+    location: 'Santiago, Chile',
+    summary: 'Desarrollo frontend de "Buy and Pickup" para Jumbo, Easy y Paris. ES6, TypeScript, React Query.',
+    height: 50,
+  },
+  {
+    name: 'Coderio',
+    logo: '/images/companies/coderslab.svg',
+    url: 'https://www.coderio.com/',
+    position: 'Sr. Frontend Developer',
+    duration: 'Abr 2022 - Abr 2023 · 1 año',
+    location: 'Santiago, Chile',
+    summary: 'Consultora a través de la cual trabajé en Cencosud para Jumbo, Easy y Paris.',
+    height: 63,
+  },
+  {
+    name: 'Globant',
+    logo: '/images/companies/globant.svg',
+    url: 'https://www.globant.com/',
+    position: 'Frontend React/Angular Developer',
+    duration: 'Oct 2020 - May 2022 · 1 año 8 meses',
+    location: 'Buenos Aires, Argentina',
+    summary: 'Proyectos con Next.js, Angular para Dell y otros clientes.',
+    height: 50,
+  },
+  {
+    name: 'Dell',
+    logo: '/images/companies/dell.svg',
+    url: 'https://www.dell.com/',
+    position: 'Frontend React/Angular Developer',
+    duration: 'Oct 2020 - May 2022 · 1 año 8 meses',
+    location: 'Buenos Aires, Argentina',
+    summary: 'Proyectos realizados a través de Globant para Dell.',
+    height: 50,
+  },
+  {
+    name: 'Telecom Argentina',
+    logo: '/images/companies/telecom.svg',
+    url: 'https://www.telecom.com.ar/',
+    position: 'Team Leader de Recursos y Soluciones Digitales',
+    duration: 'Ene 2018 - Oct 2019 · 1 año 10 meses',
+    location: 'Buenos Aires, Argentina',
+    summary: 'Coordinación de equipo de 7 personas. React, Angular, PHP, MySQL.',
+    height: 34,
+  },
+];
+---
+
+<section class='bg-black-900 mt-10 mb-10 overflow-hidden py-2'>
+  <div class='marquee-container overflow-hidden relative'>
+    <div class='marquee flex items-center' id='companies-marquee'>
+      {
+        companies.map((company) => (
+          <a
+            href={company.url}
+            target='_blank'
+            rel='noopener noreferrer'
+            class='company-logo flex-shrink-0 mx-6 py-2 opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-pointer'
+            data-company={JSON.stringify(company)}
+          >
+            <img
+              src={company.logo}
+              alt={company.name}
+              class='w-auto object-contain'
+              style={`height: ${company.height}px; margin-bottom: ${company.name === 'AccelOne' ? 14 : company.name === 'Claro Video' ? 12 : company.name === 'Telecom Argentina' ? 6 : company.height < 20 ? 10 : 0}px;`}
+            />
+          </a>
+        ))
+      }
+      {
+        companies.map((company) => (
+          <a
+            href={company.url}
+            target='_blank'
+            rel='noopener noreferrer'
+            class='company-logo flex-shrink-0 mx-6 py-2 opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-pointer'
+            data-company={JSON.stringify(company)}
+          >
+            <img
+              src={company.logo}
+              alt={company.name}
+              class='w-auto object-contain'
+              style={`height: ${company.height}px; margin-bottom: ${company.name === 'AccelOne' ? 14 : company.name === 'Claro Video' ? 12 : company.name === 'Telecom Argentina' ? 6 : company.height < 20 ? 10 : 0}px;`}
+            />
+          </a>
+        ))
+      }
     </div>
-    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
-    <div>
-      <img src='/images/companies/dell.svg' alt='hero' width='100%' />
+  </div>
+
+  <div
+    id='company-card'
+    class='fixed z-50 hidden bg-gray-900/80 backdrop-blur-md border border-gray-700/50 rounded-2xl p-6 shadow-2xl w-96'
+    style='pointer-events: none; box-shadow: 0 0 30px -5px rgba(125, 211, 206, 0.15), 0 0 60px -10px rgba(125, 211, 206, 0.1);'
+  >
+    <div class='flex items-start gap-4 mb-3'>
+      <div class='flex-1'>
+        <h3 class='text-brand font-bold text-xl mb-1' style='text-shadow: 0 0 15px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.4);' id='card-company' />
+        <p class='font-medium text-sm' style='color: #2E7D76; text-shadow: 0 0 15px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.4);' id='card-position' />
+      </div>
     </div>
-    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
-    <div>
-      <img src='/images/companies/coderslab.svg' alt='hero' width='100%' />
+    <div class='text-gray-400 text-xs mb-3 flex items-center gap-2'>
+      <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' />
+      </svg>
+      <span id='card-duration' />
     </div>
-    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
-    <div>
-      <img src='/images/companies/cencosud.svg' alt='hero' width='100%' />
+    <div class='text-gray-500 text-xs mb-3 flex items-center gap-2'>
+      <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z' />
+        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 11a3 3 0 11-6 0 3 3 0 016 0z' />
+      </svg>
+      <span id='card-location' />
     </div>
-    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
-    <div>
-      <img src='/images/companies/telecom.svg' alt='hero' width='100%' />
+    <div class='border-t border-gray-700 pt-3 mt-3'>
+      <p class='text-gray-300 text-sm leading-relaxed' id='card-summary' />
     </div>
-    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
-    <div>
-      <img
-        src='/images/companies/clarovideo-official.svg'
-        alt='Claro Video'
-        style='height: 32px; width: auto; margin-bottom: 10px;'
-      />
-    </div>
-    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
-    <div>
-      <img
-        src='/images/companies/global-hitss-official.png'
-        alt='Global HITSS'
-        style='height: 40px; width: auto;'
-      />
-    </div>
-    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
-    <div>
-      <img
-        src='/images/companies/accelone-dark.png'
-        alt='AccelOne'
-        style='height: 34px; width: auto; margin-bottom: 10px;'
-      />
-    </div>
-    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
-    <div>
-      <img
-        src='/images/companies/monetate-official.svg'
-        alt='Monetate'
-        style='height: 28px; width: auto;'
-      />
-    </div>
-    <img src='/images/companies/separator.svg' alt='hero' width='30px' />
   </div>
 </section>
+
 <style>
+  .marquee-container {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  
   .marquee {
-    display: flex;
-    overflow: hidden;
-    animation: marquee 200s linear infinite;
+    animation: scroll 40s linear infinite;
+    width: fit-content;
+  }
+  
+  .marquee:hover {
+    animation-play-state: paused;
   }
 
-  @keyframes marquee {
+  @keyframes scroll {
     0% {
-      transform: translateX(0%);
+      transform: translateX(0);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-50%);
     }
   }
 </style>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const marquee = document.querySelector('.marquee');
-    const marqueeItems = marquee?.innerHTML || '';
+    const cards = document.querySelectorAll('.company-logo');
+    const card = document.getElementById('company-card');
+    const cardCompany = document.getElementById('card-company');
+    const cardPosition = document.getElementById('card-position');
+    const cardDuration = document.getElementById('card-duration');
+    const cardLocation = document.getElementById('card-location');
+    const cardSummary = document.getElementById('card-summary');
+    const marqueeContainer = document.querySelector('.marquee-container') as HTMLElement;
 
-    // Clonar los elementos una vez para crear el efecto infinito
-    marquee!.innerHTML +=
-      marqueeItems + marqueeItems + marqueeItems + marqueeItems + marqueeItems;
+    if (!card || cards.length === 0 || !marqueeContainer) return;
 
-    // Ajustar el ancho mínimo del contenedor dinámicamente
-    const itemCount = marquee!.children.length;
-    (marquee as HTMLElement).style.minWidth = `${itemCount * 200}px`;
+    const CARD_HEIGHT = 280;
+    const MARGIN = 4;
+
+    let hideTimeout: ReturnType<typeof setTimeout>;
+
+    const showCard = (e: MouseEvent, el: Element) => {
+      const data = JSON.parse(el.getAttribute('data-company') || '{}');
+      
+      if (cardCompany) cardCompany.textContent = data.name;
+      if (cardPosition) cardPosition.textContent = data.position;
+      if (cardDuration) cardDuration.textContent = data.duration;
+      if (cardLocation) cardLocation.textContent = data.location;
+      if (cardSummary) cardSummary.textContent = data.summary;
+
+      const marqueeRect = marqueeContainer.getBoundingClientRect();
+      const marqueeTop = marqueeRect.top;
+      const marqueeBottom = marqueeRect.bottom;
+      const elRect = el.getBoundingClientRect();
+
+      const spaceAbove = marqueeTop;
+      const spaceBelow = window.innerHeight - marqueeBottom;
+
+      let y: number;
+      if (spaceAbove >= CARD_HEIGHT + MARGIN) {
+        y = marqueeTop - CARD_HEIGHT - MARGIN + 15;
+      } else if (spaceBelow >= CARD_HEIGHT + MARGIN) {
+        y = marqueeBottom + MARGIN + 15;
+      } else {
+        y = e.clientY + 20;
+      }
+
+      const elCenter = elRect.left + elRect.width / 2;
+      const x = Math.max(20, Math.min(elCenter - 210, window.innerWidth - 420));
+      y = Math.min(y, window.innerHeight - CARD_HEIGHT - 10);
+      y = Math.max(y, 10);
+      
+      card.style.left = `${x}px`;
+      card.style.top = `${y}px`;
+      card.classList.remove('hidden');
+    };
+
+    const hideCard = () => {
+      hideTimeout = setTimeout(() => {
+        card.classList.add('hidden');
+      }, 200);
+    };
+
+    cards.forEach((el) => {
+      el.addEventListener('mouseenter', (e) => {
+        clearTimeout(hideTimeout);
+        showCard(e as MouseEvent, el);
+      });
+
+      el.addEventListener('mousemove', (e) => {
+        const marqueeRect = marqueeContainer.getBoundingClientRect();
+        const marqueeTop = marqueeRect.top;
+        const marqueeBottom = marqueeRect.bottom;
+        const elRect = el.getBoundingClientRect();
+
+        const spaceAbove = marqueeTop;
+        const spaceBelow = window.innerHeight - marqueeBottom;
+
+        let y: number;
+        if (spaceAbove >= CARD_HEIGHT + MARGIN) {
+          y = marqueeTop - CARD_HEIGHT - MARGIN + 15;
+        } else if (spaceBelow >= CARD_HEIGHT + MARGIN) {
+          y = marqueeBottom + MARGIN + 15;
+        } else {
+          y = (e as MouseEvent).clientY + 20;
+        }
+
+        const elCenter = elRect.left + elRect.width / 2;
+        const x = Math.max(20, Math.min(elCenter - 210, window.innerWidth - 420));
+        y = Math.min(y, window.innerHeight - CARD_HEIGHT - 10);
+        y = Math.max(y, 10);
+        card.style.left = `${x}px`;
+        card.style.top = `${y}px`;
+      });
+
+      el.addEventListener('mouseleave', hideCard);
+    });
   });
 </script>
