@@ -10,103 +10,140 @@ type Company = {
   height: number;
 };
 
-/** Consultora → empresa en cada par. Separador de marcas entre grupos (incl. tras Telecom). */
-const companyGroups: Company[][] = [
-  [
-    {
+type MarqueePair = {
+  kind: 'pair';
+  consultant: Company;
+  client: Company;
+  position: string;
+  duration: string;
+  location: string;
+  /** Texto único para la tarjeta: experiencia + relación consultora → cliente */
+  narrative: string;
+};
+
+type MarqueeSingle = {
+  kind: 'single';
+  company: Company;
+};
+
+type MarqueeGroup = MarqueePair | MarqueeSingle;
+
+const marqueeGroups: MarqueeGroup[] = [
+  {
+    kind: 'pair',
+    consultant: {
       name: 'Coderio',
       logo: '/images/companies/coderslab.svg',
       url: 'https://www.coderio.com/',
       position: 'Sr. Frontend Developer',
       duration: 'Abr 2022 - Abr 2023 · 1 año',
       location: 'Santiago, Chile',
-      summary:
-        'Consultora a través de la cual trabajé en Cencosud para Jumbo, Easy y Paris.',
+      summary: '',
       height: 63,
     },
-    {
+    client: {
       name: 'Cencosud',
       logo: '/images/companies/cencosud.svg',
       url: 'https://www.cencosud.com/',
       position: 'Sr. Frontend Developer',
       duration: 'Abr 2022 - Abr 2023 · 1 año',
       location: 'Santiago, Chile',
-      summary:
-        'Desarrollo frontend de "Buy and Pickup" para Jumbo, Easy y Paris. ES6, TypeScript, React Query.',
+      summary: '',
       height: 50,
     },
-  ],
-  [
-    {
+    position: 'Sr. Frontend Developer',
+    duration: 'Abr 2022 - Abr 2023 · 1 año',
+    location: 'Santiago, Chile',
+    narrative:
+      'A través de Coderio trabajé para Cencosud en el desarrollo frontend de "Buy and Pickup" para Jumbo, Easy y Paris: ES6, TypeScript, React Query y entrega en retail.',
+  },
+  {
+    kind: 'pair',
+    consultant: {
       name: 'Globant',
       logo: '/images/companies/globant.svg',
       url: 'https://www.globant.com/',
       position: 'Frontend React/Angular Developer',
       duration: 'Oct 2020 - May 2022 · 1 año 8 meses',
       location: 'Buenos Aires, Argentina',
-      summary: 'Proyectos con Next.js, Angular para Dell y otros clientes.',
-      height: 50,
+      summary: '',
+      height: 45,
     },
-    {
+    client: {
       name: 'Dell',
       logo: '/images/companies/dell.svg',
       url: 'https://www.dell.com/',
       position: 'Frontend React/Angular Developer',
       duration: 'Oct 2020 - May 2022 · 1 año 8 meses',
       location: 'Buenos Aires, Argentina',
-      summary: 'Proyectos realizados a través de Globant para Dell.',
-      height: 50,
+      summary: '',
+      height: 40,
     },
-  ],
-  [
-    {
+    position: 'Frontend React/Angular Developer',
+    duration: 'Oct 2020 - May 2022 · 1 año 8 meses',
+    location: 'Buenos Aires, Argentina',
+    narrative:
+      'En Globant participé en proyectos con Next.js y Angular para Dell y otros clientes: trabajo end-to-end bajo el modelo consultoría → cuenta.',
+  },
+  {
+    kind: 'pair',
+    consultant: {
       name: 'Global Hitss',
       logo: '/images/companies/global-hitss-official.png',
       url: 'https://globalhitss.com/',
       position: 'Frontend Tech Lead - React Js',
       duration: 'Dic 2024 - Jun 2025 · 7 meses',
       location: 'Ciudad de México, México · Híbrido',
-      summary:
-        'Lideré equipo de 8 personas en entorno agile para Claro Video global. Revisiones de código y mentoría.',
-      height: 40,
+      summary: '',
+      height: 42,
     },
-    {
+    client: {
       name: 'Claro Video',
       logo: '/images/companies/clarovideo-official.svg',
       url: 'https://www.clarovideo.com/',
       position: 'Frontend Tech Lead',
       duration: '2024 - 2025',
       location: 'México · Híbrido',
-      summary: 'Lideré equipo para Claro Video a nivel global.',
+      summary: '',
       height: 32,
     },
-  ],
-  [
-    {
+    position: 'Frontend Tech Lead',
+    duration: 'Dic 2024 - Jun 2025 · 7 meses',
+    location: 'Ciudad de México, México · Híbrido',
+    narrative:
+      'Desde Global Hitss lideré frente a Claro Video: equipo de 8 en agile, revisiones de código y mentoría para el producto a escala global.',
+  },
+  {
+    kind: 'pair',
+    consultant: {
       name: 'AccelOne',
       logo: '/images/companies/accelone-dark.png',
       url: 'https://accelone.com/',
       position: 'Senior Frontend Developer',
       duration: 'Jul 2025 - Actual · 9 meses',
       location: 'Ciudad de México, México · En remoto',
-      summary:
-        'Desarrollo frontend con React, TypeScript y implementación de mejores prácticas.',
+      summary: '',
       height: 34,
     },
-    {
+    client: {
       name: 'Monetate',
       logo: '/images/companies/monetate-official.svg',
       url: 'https://monetate.com/',
       position: 'Frontend Specialist',
       duration: 'Jul 2025 - Actual · 9 meses',
       location: 'Ciudad de México, México · En remoto',
-      summary:
-        'Plataforma de Optimización de Experiencias con IA. Personalización, Experimentación y ML.',
-      height: 28,
+      summary: '',
+      height: 25,
     },
-  ],
-  [
-    {
+    position: 'Frontend Specialist',
+    duration: 'Jul 2025 - Actual · 9 meses',
+    location: 'Ciudad de México, México · En remoto',
+    narrative:
+      'Con AccelOne aporto frontend en React y TypeScript sobre la plataforma de Monetate (personalización, experimentación y ML).',
+  },
+  {
+    kind: 'single',
+    company: {
       name: 'Telecom Argentina',
       logo: '/images/companies/telecom.svg',
       url: 'https://www.telecom.com.ar/',
@@ -115,9 +152,9 @@ const companyGroups: Company[][] = [
       location: 'Buenos Aires, Argentina',
       summary:
         'Coordinación de equipo de 7 personas. React, Angular, PHP, MySQL.',
-      height: 34,
+      height: 28,
     },
-  ],
+  },
 ];
 
 const imgBottom = (name: string, height: number) => {
@@ -127,6 +164,28 @@ const imgBottom = (name: string, height: number) => {
   if (height < 20) return 10;
   return 0;
 };
+
+const pairPayload = (g: MarqueeGroup) => {
+  if (g.kind === 'pair') {
+    return JSON.stringify({
+      kind: 'pair',
+      clientName: g.client.name,
+      consultantName: g.consultant.name,
+      position: g.position,
+      duration: g.duration,
+      location: g.location,
+      narrative: g.narrative,
+    });
+  }
+  return JSON.stringify({
+    kind: 'single',
+    name: g.company.name,
+    position: g.company.position,
+    duration: g.company.duration,
+    location: g.company.location,
+    narrative: g.company.summary,
+  });
+};
 ---
 
 <section class='bg-black-900 mt-10 mb-10 overflow-hidden py-2'>
@@ -134,45 +193,72 @@ const imgBottom = (name: string, height: number) => {
     <div class='marquee flex items-center' id='companies-marquee'>
       {[0, 1].map(() => (
         <>
-          {companyGroups.map((group) => (
+          {marqueeGroups.map((group) => (
             <>
-              <div class='flex flex-shrink-0 items-center gap-2 sm:gap-3 px-2 sm:px-4'>
-                {group.map((company, ci) => (
+              <div
+                class='company-pair flex flex-shrink-0 items-center gap-2 sm:gap-3 px-2 sm:px-4 rounded-lg transition-opacity duration-300'
+                data-pair={pairPayload(group)}
+              >
+                {group.kind === 'pair' ? (
                   <>
                     <a
-                      href={company.url}
+                      href={group.consultant.url}
                       target='_blank'
                       rel='noopener noreferrer'
-                      class='company-logo flex-shrink-0 py-2 opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-pointer'
-                      data-company={JSON.stringify(company)}
+                      class='company-logo-pair flex-shrink-0 py-2 opacity-70 transition-opacity duration-300 cursor-pointer'
                     >
                       <img
-                        src={company.logo}
-                        alt={company.name}
+                        src={group.consultant.logo}
+                        alt={group.consultant.name}
                         class='w-auto object-contain'
-                        style={`height: ${company.height}px; margin-bottom: ${imgBottom(company.name, company.height)}px;`}
+                        style={`height: ${group.consultant.height}px; margin-bottom: ${imgBottom(group.consultant.name, group.consultant.height)}px;`}
                       />
                     </a>
-                    {ci === 0 && group.length === 2 ? (
-                      <span
-                        class='flex flex-shrink-0 items-center text-black-400 opacity-50'
-                        aria-hidden='true'
+                    <span
+                      class='company-pair-arrow flex flex-shrink-0 items-center text-black-400 opacity-50'
+                      aria-hidden='true'
+                    >
+                      <svg
+                        class='w-4 h-4 sm:w-[18px] sm:h-[18px]'
+                        viewBox='0 0 24 24'
+                        fill='none'
+                        stroke='currentColor'
+                        stroke-width='2'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
                       >
-                        <svg
-                          class='w-4 h-4 sm:w-[18px] sm:h-[18px]'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          stroke='currentColor'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
-                        >
-                          <path d='M5 12h14M14 8l6 4-6 4' />
-                        </svg>
-                      </span>
-                    ) : null}
+                        <path d='M5 12h14M14 8l6 4-6 4' />
+                      </svg>
+                    </span>
+                    <a
+                      href={group.client.url}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      class='company-logo-pair flex-shrink-0 py-2 opacity-70 transition-opacity duration-300 cursor-pointer'
+                    >
+                      <img
+                        src={group.client.logo}
+                        alt={group.client.name}
+                        class='w-auto object-contain'
+                        style={`height: ${group.client.height}px; margin-bottom: ${imgBottom(group.client.name, group.client.height)}px;`}
+                      />
+                    </a>
                   </>
-                ))}
+                ) : (
+                  <a
+                    href={group.company.url}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    class='company-logo-pair flex-shrink-0 py-2 opacity-70 transition-opacity duration-300 cursor-pointer'
+                  >
+                    <img
+                      src={group.company.logo}
+                      alt={group.company.name}
+                      class='w-auto object-contain'
+                      style={`height: ${group.company.height}px; margin-bottom: ${imgBottom(group.company.name, group.company.height)}px;`}
+                    />
+                  </a>
+                )}
               </div>
               <span
                 class='flex flex-shrink-0 items-center justify-center px-2 sm:px-4 opacity-45'
@@ -195,29 +281,41 @@ const imgBottom = (name: string, height: number) => {
 
   <div
     id='company-card'
-    class='fixed z-50 hidden bg-gray-900/80 backdrop-blur-md border border-gray-700/50 rounded-2xl p-6 shadow-2xl w-96'
+    class='fixed z-50 hidden bg-gray-900/80 backdrop-blur-md border border-gray-700/50 rounded-2xl p-6 shadow-2xl w-96 max-w-[calc(100vw-2rem)]'
     style='pointer-events: none; box-shadow: 0 0 30px -5px rgba(125, 211, 206, 0.15), 0 0 60px -10px rgba(125, 211, 206, 0.1);'
   >
-    <div class='flex items-start gap-4 mb-3'>
-      <div class='flex-1'>
-        <h3 class='text-brand font-bold text-xl mb-1' style='text-shadow: 0 0 15px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.4);' id='card-company' />
-        <p class='font-medium text-sm' style='color: #2E7D76; text-shadow: 0 0 15px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.4);' id='card-position' />
+    <div class='flex items-start gap-4 mb-2'>
+      <div class='flex-1 min-w-0'>
+        <h3
+          class='text-brand font-bold text-xl mb-1'
+          style='text-shadow: 0 0 15px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.4);'
+          id='card-company'
+        />
+        <p
+          class='text-gray-400 text-sm leading-snug mb-2 hidden'
+          id='card-via'
+        />
+        <p
+          class='font-medium text-sm'
+          style='color: #2E7D76; text-shadow: 0 0 15px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.4);'
+          id='card-position'
+        />
       </div>
     </div>
     <div class='text-gray-400 text-xs mb-3 flex items-center gap-2'>
-      <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+      <svg class='w-4 h-4 shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
         <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' />
       </svg>
       <span id='card-duration' />
     </div>
     <div class='text-gray-500 text-xs mb-3 flex items-center gap-2'>
-      <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+      <svg class='w-4 h-4 shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
         <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z' />
         <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 11a3 3 0 11-6 0 3 3 0 016 0z' />
       </svg>
       <span id='card-location' />
     </div>
-    <div class='border-t border-gray-700 pt-3 mt-3'>
+    <div class='border-t border-gray-700 pt-3 mt-1'>
       <p class='text-gray-300 text-sm leading-relaxed' id='card-summary' />
     </div>
   </div>
@@ -246,39 +344,80 @@ const imgBottom = (name: string, height: number) => {
       transform: translateX(-50%);
     }
   }
+
+  .company-pair:hover .company-logo-pair,
+  .company-pair:hover .company-pair-arrow,
+  .company-pair:focus-within .company-logo-pair,
+  .company-pair:focus-within .company-pair-arrow {
+    opacity: 1;
+  }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.company-logo');
+    const pairs = document.querySelectorAll('.company-pair');
     const card = document.getElementById('company-card');
     const cardCompany = document.getElementById('card-company');
+    const cardVia = document.getElementById('card-via');
     const cardPosition = document.getElementById('card-position');
     const cardDuration = document.getElementById('card-duration');
     const cardLocation = document.getElementById('card-location');
     const cardSummary = document.getElementById('card-summary');
     const marqueeContainer = document.querySelector('.marquee-container') as HTMLElement;
 
-    if (!card || cards.length === 0 || !marqueeContainer) return;
+    if (!card || pairs.length === 0 || !marqueeContainer) return;
 
-    const CARD_HEIGHT = 280;
+    const CARD_HEIGHT = 300;
     const MARGIN = 4;
 
     let hideTimeout: ReturnType<typeof setTimeout>;
 
-    const showCard = (e: MouseEvent, el: Element) => {
-      const data = JSON.parse(el.getAttribute('data-company') || '{}');
+    type PairPayload =
+      | {
+          kind: 'pair';
+          clientName: string;
+          consultantName: string;
+          position: string;
+          duration: string;
+          location: string;
+          narrative: string;
+        }
+      | {
+          kind: 'single';
+          name: string;
+          position: string;
+          duration: string;
+          location: string;
+          narrative: string;
+        };
 
-      if (cardCompany) cardCompany.textContent = data.name;
-      if (cardPosition) cardPosition.textContent = data.position;
-      if (cardDuration) cardDuration.textContent = data.duration;
-      if (cardLocation) cardLocation.textContent = data.location;
-      if (cardSummary) cardSummary.textContent = data.summary;
+    const fillCard = (data: PairPayload) => {
+      if (!cardCompany || !cardVia || !cardPosition || !cardDuration || !cardLocation || !cardSummary)
+        return;
 
+      if (data.kind === 'pair') {
+        cardCompany.textContent = data.clientName;
+        cardVia.textContent = `A través de ${data.consultantName}`;
+        cardVia.classList.remove('hidden');
+        cardPosition.textContent = data.position;
+        cardDuration.textContent = data.duration;
+        cardLocation.textContent = data.location;
+        cardSummary.textContent = data.narrative;
+      } else {
+        cardCompany.textContent = data.name;
+        cardVia.classList.add('hidden');
+        cardVia.textContent = '';
+        cardPosition.textContent = data.position;
+        cardDuration.textContent = data.duration;
+        cardLocation.textContent = data.location;
+        cardSummary.textContent = data.narrative;
+      }
+    };
+
+    const positionCard = (anchor: DOMRect) => {
       const marqueeRect = marqueeContainer.getBoundingClientRect();
       const marqueeTop = marqueeRect.top;
       const marqueeBottom = marqueeRect.bottom;
-      const elRect = el.getBoundingClientRect();
 
       const spaceAbove = marqueeTop;
       const spaceBelow = window.innerHeight - marqueeBottom;
@@ -289,16 +428,24 @@ const imgBottom = (name: string, height: number) => {
       } else if (spaceBelow >= CARD_HEIGHT + MARGIN) {
         y = marqueeBottom + MARGIN + 15;
       } else {
-        y = e.clientY + 20;
+        y = Math.max(10, anchor.top - CARD_HEIGHT - 12);
       }
 
-      const elCenter = elRect.left + elRect.width / 2;
-      const x = Math.max(20, Math.min(elCenter - 210, window.innerWidth - 420));
+      const elCenter = anchor.left + anchor.width / 2;
+      const x = Math.max(20, Math.min(elCenter - 192, window.innerWidth - 404));
       y = Math.min(y, window.innerHeight - CARD_HEIGHT - 10);
       y = Math.max(y, 10);
 
       card.style.left = `${x}px`;
       card.style.top = `${y}px`;
+    };
+
+    const showCardForPair = (pairEl: Element) => {
+      const raw = pairEl.getAttribute('data-pair');
+      if (!raw) return;
+      const data = JSON.parse(raw) as PairPayload;
+      fillCard(data);
+      positionCard(pairEl.getBoundingClientRect());
       card.classList.remove('hidden');
     };
 
@@ -308,39 +455,28 @@ const imgBottom = (name: string, height: number) => {
       }, 200);
     };
 
-    cards.forEach((el) => {
-      el.addEventListener('mouseenter', (e) => {
+    pairs.forEach((pairEl) => {
+      pairEl.addEventListener('mouseenter', () => {
         clearTimeout(hideTimeout);
-        showCard(e as MouseEvent, el);
+        showCardForPair(pairEl);
       });
 
-      el.addEventListener('mousemove', (e) => {
-        const marqueeRect = marqueeContainer.getBoundingClientRect();
-        const marqueeTop = marqueeRect.top;
-        const marqueeBottom = marqueeRect.bottom;
-        const elRect = el.getBoundingClientRect();
-
-        const spaceAbove = marqueeTop;
-        const spaceBelow = window.innerHeight - marqueeBottom;
-
-        let y: number;
-        if (spaceAbove >= CARD_HEIGHT + MARGIN) {
-          y = marqueeTop - CARD_HEIGHT - MARGIN + 15;
-        } else if (spaceBelow >= CARD_HEIGHT + MARGIN) {
-          y = marqueeBottom + MARGIN + 15;
-        } else {
-          y = (e as MouseEvent).clientY + 20;
-        }
-
-        const elCenter = elRect.left + elRect.width / 2;
-        const x = Math.max(20, Math.min(elCenter - 210, window.innerWidth - 420));
-        y = Math.min(y, window.innerHeight - CARD_HEIGHT - 10);
-        y = Math.max(y, 10);
-        card.style.left = `${x}px`;
-        card.style.top = `${y}px`;
+      pairEl.addEventListener('mousemove', () => {
+        positionCard(pairEl.getBoundingClientRect());
       });
 
-      el.addEventListener('mouseleave', hideCard);
+      pairEl.addEventListener('mouseleave', hideCard);
+
+      pairEl.addEventListener('focusin', () => {
+        clearTimeout(hideTimeout);
+        showCardForPair(pairEl);
+      });
+
+      pairEl.addEventListener('focusout', (e) => {
+        const next = (e as FocusEvent).relatedTarget as Node | null;
+        if (next && pairEl.contains(next)) return;
+        hideCard();
+      });
     });
   });
 </script>
