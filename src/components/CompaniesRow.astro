@@ -1,137 +1,195 @@
 ---
-const companies = [
-  {
-    name: 'Monetate',
-    logo: '/images/companies/monetate-official.svg',
-    url: 'https://monetate.com/',
-    position: 'Frontend Specialist',
-    duration: 'Jul 2025 - Actual · 9 meses',
-    location: 'Ciudad de México, México · En remoto',
-    summary: 'Plataforma de Optimización de Experiencias con IA. Personalización, Experimentación y ML.',
-    height: 28,
-  },
-  {
-    name: 'AccelOne',
-    logo: '/images/companies/accelone-dark.png',
-    url: 'https://accelone.com/',
-    position: 'Senior Frontend Developer',
-    duration: 'Jul 2025 - Actual · 9 meses',
-    location: 'Ciudad de México, México · En remoto',
-    summary: 'Desarrollo frontend con React, TypeScript y implementación de mejores prácticas.',
-    height: 34,
-  },
-  {
-    name: 'Global Hitss',
-    logo: '/images/companies/global-hitss-official.png',
-    url: 'https://globalhitss.com/',
-    position: 'Frontend Tech Lead - React Js',
-    duration: 'Dic 2024 - Jun 2025 · 7 meses',
-    location: 'Ciudad de México, México · Híbrido',
-    summary: 'Lideré equipo de 8 personas en entorno agile para Claro Video global. Revisiones de código y mentoría.',
-    height: 40,
-  },
-  {
-    name: 'Claro Video',
-    logo: '/images/companies/clarovideo-official.svg',
-    url: 'https://www.clarovideo.com/',
-    position: 'Frontend Tech Lead',
-    duration: '2024 - 2025',
-    location: 'México · Híbrido',
-    summary: 'Lideré equipo para Claro Video a nivel global.',
-    height: 32,
-  },
-  {
-    name: 'Cencosud',
-    logo: '/images/companies/cencosud.svg',
-    url: 'https://www.cencosud.com/',
-    position: 'Sr. Frontend Developer',
-    duration: 'Abr 2022 - Abr 2023 · 1 año',
-    location: 'Santiago, Chile',
-    summary: 'Desarrollo frontend de "Buy and Pickup" para Jumbo, Easy y Paris. ES6, TypeScript, React Query.',
-    height: 50,
-  },
-  {
-    name: 'Coderio',
-    logo: '/images/companies/coderslab.svg',
-    url: 'https://www.coderio.com/',
-    position: 'Sr. Frontend Developer',
-    duration: 'Abr 2022 - Abr 2023 · 1 año',
-    location: 'Santiago, Chile',
-    summary: 'Consultora a través de la cual trabajé en Cencosud para Jumbo, Easy y Paris.',
-    height: 63,
-  },
-  {
-    name: 'Globant',
-    logo: '/images/companies/globant.svg',
-    url: 'https://www.globant.com/',
-    position: 'Frontend React/Angular Developer',
-    duration: 'Oct 2020 - May 2022 · 1 año 8 meses',
-    location: 'Buenos Aires, Argentina',
-    summary: 'Proyectos con Next.js, Angular para Dell y otros clientes.',
-    height: 50,
-  },
-  {
-    name: 'Dell',
-    logo: '/images/companies/dell.svg',
-    url: 'https://www.dell.com/',
-    position: 'Frontend React/Angular Developer',
-    duration: 'Oct 2020 - May 2022 · 1 año 8 meses',
-    location: 'Buenos Aires, Argentina',
-    summary: 'Proyectos realizados a través de Globant para Dell.',
-    height: 50,
-  },
-  {
-    name: 'Telecom Argentina',
-    logo: '/images/companies/telecom.svg',
-    url: 'https://www.telecom.com.ar/',
-    position: 'Team Leader de Recursos y Soluciones Digitales',
-    duration: 'Ene 2018 - Oct 2019 · 1 año 10 meses',
-    location: 'Buenos Aires, Argentina',
-    summary: 'Coordinación de equipo de 7 personas. React, Angular, PHP, MySQL.',
-    height: 34,
-  },
+type Company = {
+  name: string;
+  logo: string;
+  url: string;
+  position: string;
+  duration: string;
+  location: string;
+  summary: string;
+  height: number;
+};
+
+/** Consultora → empresa en cada par. Separador de marcas entre grupos (incl. tras Telecom). */
+const companyGroups: Company[][] = [
+  [
+    {
+      name: 'Coderio',
+      logo: '/images/companies/coderslab.svg',
+      url: 'https://www.coderio.com/',
+      position: 'Sr. Frontend Developer',
+      duration: 'Abr 2022 - Abr 2023 · 1 año',
+      location: 'Santiago, Chile',
+      summary:
+        'Consultora a través de la cual trabajé en Cencosud para Jumbo, Easy y Paris.',
+      height: 63,
+    },
+    {
+      name: 'Cencosud',
+      logo: '/images/companies/cencosud.svg',
+      url: 'https://www.cencosud.com/',
+      position: 'Sr. Frontend Developer',
+      duration: 'Abr 2022 - Abr 2023 · 1 año',
+      location: 'Santiago, Chile',
+      summary:
+        'Desarrollo frontend de "Buy and Pickup" para Jumbo, Easy y Paris. ES6, TypeScript, React Query.',
+      height: 50,
+    },
+  ],
+  [
+    {
+      name: 'Globant',
+      logo: '/images/companies/globant.svg',
+      url: 'https://www.globant.com/',
+      position: 'Frontend React/Angular Developer',
+      duration: 'Oct 2020 - May 2022 · 1 año 8 meses',
+      location: 'Buenos Aires, Argentina',
+      summary: 'Proyectos con Next.js, Angular para Dell y otros clientes.',
+      height: 50,
+    },
+    {
+      name: 'Dell',
+      logo: '/images/companies/dell.svg',
+      url: 'https://www.dell.com/',
+      position: 'Frontend React/Angular Developer',
+      duration: 'Oct 2020 - May 2022 · 1 año 8 meses',
+      location: 'Buenos Aires, Argentina',
+      summary: 'Proyectos realizados a través de Globant para Dell.',
+      height: 50,
+    },
+  ],
+  [
+    {
+      name: 'Global Hitss',
+      logo: '/images/companies/global-hitss-official.png',
+      url: 'https://globalhitss.com/',
+      position: 'Frontend Tech Lead - React Js',
+      duration: 'Dic 2024 - Jun 2025 · 7 meses',
+      location: 'Ciudad de México, México · Híbrido',
+      summary:
+        'Lideré equipo de 8 personas en entorno agile para Claro Video global. Revisiones de código y mentoría.',
+      height: 40,
+    },
+    {
+      name: 'Claro Video',
+      logo: '/images/companies/clarovideo-official.svg',
+      url: 'https://www.clarovideo.com/',
+      position: 'Frontend Tech Lead',
+      duration: '2024 - 2025',
+      location: 'México · Híbrido',
+      summary: 'Lideré equipo para Claro Video a nivel global.',
+      height: 32,
+    },
+  ],
+  [
+    {
+      name: 'AccelOne',
+      logo: '/images/companies/accelone-dark.png',
+      url: 'https://accelone.com/',
+      position: 'Senior Frontend Developer',
+      duration: 'Jul 2025 - Actual · 9 meses',
+      location: 'Ciudad de México, México · En remoto',
+      summary:
+        'Desarrollo frontend con React, TypeScript y implementación de mejores prácticas.',
+      height: 34,
+    },
+    {
+      name: 'Monetate',
+      logo: '/images/companies/monetate-official.svg',
+      url: 'https://monetate.com/',
+      position: 'Frontend Specialist',
+      duration: 'Jul 2025 - Actual · 9 meses',
+      location: 'Ciudad de México, México · En remoto',
+      summary:
+        'Plataforma de Optimización de Experiencias con IA. Personalización, Experimentación y ML.',
+      height: 28,
+    },
+  ],
+  [
+    {
+      name: 'Telecom Argentina',
+      logo: '/images/companies/telecom.svg',
+      url: 'https://www.telecom.com.ar/',
+      position: 'Team Leader de Recursos y Soluciones Digitales',
+      duration: 'Ene 2018 - Oct 2019 · 1 año 10 meses',
+      location: 'Buenos Aires, Argentina',
+      summary:
+        'Coordinación de equipo de 7 personas. React, Angular, PHP, MySQL.',
+      height: 34,
+    },
+  ],
 ];
+
+const imgBottom = (name: string, height: number) => {
+  if (name === 'AccelOne') return 14;
+  if (name === 'Claro Video') return 12;
+  if (name === 'Telecom Argentina') return 6;
+  if (height < 20) return 10;
+  return 0;
+};
 ---
 
 <section class='bg-black-900 mt-10 mb-10 overflow-hidden py-2'>
   <div class='marquee-container overflow-hidden relative'>
     <div class='marquee flex items-center' id='companies-marquee'>
-      {
-        companies.map((company) => (
-          <a
-            href={company.url}
-            target='_blank'
-            rel='noopener noreferrer'
-            class='company-logo flex-shrink-0 mx-6 py-2 opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-pointer'
-            data-company={JSON.stringify(company)}
-          >
-            <img
-              src={company.logo}
-              alt={company.name}
-              class='w-auto object-contain'
-              style={`height: ${company.height}px; margin-bottom: ${company.name === 'AccelOne' ? 14 : company.name === 'Claro Video' ? 12 : company.name === 'Telecom Argentina' ? 6 : company.height < 20 ? 10 : 0}px;`}
-            />
-          </a>
-        ))
-      }
-      {
-        companies.map((company) => (
-          <a
-            href={company.url}
-            target='_blank'
-            rel='noopener noreferrer'
-            class='company-logo flex-shrink-0 mx-6 py-2 opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-pointer'
-            data-company={JSON.stringify(company)}
-          >
-            <img
-              src={company.logo}
-              alt={company.name}
-              class='w-auto object-contain'
-              style={`height: ${company.height}px; margin-bottom: ${company.name === 'AccelOne' ? 14 : company.name === 'Claro Video' ? 12 : company.name === 'Telecom Argentina' ? 6 : company.height < 20 ? 10 : 0}px;`}
-            />
-          </a>
-        ))
-      }
+      {[0, 1].map(() => (
+        <>
+          {companyGroups.map((group) => (
+            <>
+              <div class='flex flex-shrink-0 items-center gap-2 sm:gap-3 px-2 sm:px-4'>
+                {group.map((company, ci) => (
+                  <>
+                    <a
+                      href={company.url}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      class='company-logo flex-shrink-0 py-2 opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-pointer'
+                      data-company={JSON.stringify(company)}
+                    >
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        class='w-auto object-contain'
+                        style={`height: ${company.height}px; margin-bottom: ${imgBottom(company.name, company.height)}px;`}
+                      />
+                    </a>
+                    {ci === 0 && group.length === 2 ? (
+                      <span
+                        class='flex flex-shrink-0 items-center text-black-400 opacity-50'
+                        aria-hidden='true'
+                      >
+                        <svg
+                          class='w-4 h-4 sm:w-[18px] sm:h-[18px]'
+                          viewBox='0 0 24 24'
+                          fill='none'
+                          stroke='currentColor'
+                          stroke-width='2'
+                          stroke-linecap='round'
+                          stroke-linejoin='round'
+                        >
+                          <path d='M5 12h14M14 8l6 4-6 4' />
+                        </svg>
+                      </span>
+                    ) : null}
+                  </>
+                ))}
+              </div>
+              <span
+                class='flex flex-shrink-0 items-center justify-center px-2 sm:px-4 opacity-45'
+                aria-hidden='true'
+              >
+                <img
+                  src='/images/companies/separator.svg'
+                  alt=''
+                  width='34'
+                  height='20'
+                  class='h-4 w-auto sm:h-5'
+                />
+              </span>
+            </>
+          ))}
+        </>
+      ))}
     </div>
   </div>
 
@@ -170,12 +228,12 @@ const companies = [
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   }
-  
+
   .marquee {
     animation: scroll 40s linear infinite;
     width: fit-content;
   }
-  
+
   .marquee:hover {
     animation-play-state: paused;
   }
@@ -210,7 +268,7 @@ const companies = [
 
     const showCard = (e: MouseEvent, el: Element) => {
       const data = JSON.parse(el.getAttribute('data-company') || '{}');
-      
+
       if (cardCompany) cardCompany.textContent = data.name;
       if (cardPosition) cardPosition.textContent = data.position;
       if (cardDuration) cardDuration.textContent = data.duration;
@@ -238,7 +296,7 @@ const companies = [
       const x = Math.max(20, Math.min(elCenter - 210, window.innerWidth - 420));
       y = Math.min(y, window.innerHeight - CARD_HEIGHT - 10);
       y = Math.max(y, 10);
-      
+
       card.style.left = `${x}px`;
       card.style.top = `${y}px`;
       card.classList.remove('hidden');
