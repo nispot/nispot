@@ -108,6 +108,24 @@ export const ui = {
     'contact.title': "LET'S WORK IN",
     'contact.subtitle': 'TOGETHER',
     'footer.copyright': 'Human intent, amplified by AI | CDMX - 2026',
+    'rauxdata.kicker': 'OWN PRODUCT · LIVE IN PRODUCTION',
+    'rauxdata.title': 'Rauxdata',
+    'rauxdata.tagline':
+      'Post-purchase attribution & zero-party surveys for e-commerce',
+    'rauxdata.problem':
+      "Every ad platform claims credit for the same sale, and you have no way to know the truth. Rauxdata asks your customers one question after checkout and reconciles what they declare against pixel and UTM signals — so you finally see which channels actually bring revenue and which you're burning.",
+    'rauxdata.tech1':
+      'Multi-tenant architecture with per-workspace isolation and RBAC',
+    'rauxdata.tech2':
+      'Multi-currency attribution engine reconciling declared data against pixel and UTM signals',
+    'rauxdata.tech3':
+      'Idempotent, exactly-once webhooks anchored in database constraints',
+    'rauxdata.tech4':
+      'Universal Preact widget under a 19 KB gzip budget with Shadow DOM',
+    'rauxdata.tech5': '2,500+ tests under strict TDD',
+    'rauxdata.stack_label': 'Built with',
+    'rauxdata.cta': 'Visit Rauxdata',
+    'rauxdata.image_alt': 'Rauxdata dashboard',
   },
   es: {
     'nav.home': 'Inicio',
@@ -211,5 +229,23 @@ export const ui = {
     'contact.title': 'TRABAJEMOS',
     'contact.subtitle': 'JUNTOS',
     'footer.copyright': 'Intención humana, expandida por la inteligencia artificial | CDMX - 2026',
+    'rauxdata.kicker': 'PRODUCTO PROPIO · EN PRODUCCIÓN',
+    'rauxdata.title': 'Rauxdata',
+    'rauxdata.tagline':
+      'Atribución post-compra y encuestas zero-party para e-commerce',
+    'rauxdata.problem':
+      'Cada plataforma de ads reclama crédito por la misma venta, y no tenés forma de saber cuál es la verdad. Rauxdata le hace una sola pregunta a tu cliente después de la compra y la reconcilia contra las señales de pixel y UTM — así ves por fin qué canales traen plata de verdad y cuáles estás quemando.',
+    'rauxdata.tech1':
+      'Arquitectura multi-tenant con aislamiento por workspace y RBAC',
+    'rauxdata.tech2':
+      'Motor de atribución multi-moneda que reconcilia datos declarados contra señales de pixel y UTM',
+    'rauxdata.tech3':
+      'Webhooks idempotentes exactly-once anclados en constraints de base de datos',
+    'rauxdata.tech4':
+      'Widget universal en Preact bajo presupuesto de 19 KB gzip con Shadow DOM',
+    'rauxdata.tech5': '+2.500 tests bajo TDD estricto',
+    'rauxdata.stack_label': 'Construido con',
+    'rauxdata.cta': 'Visitar Rauxdata',
+    'rauxdata.image_alt': 'Dashboard de Rauxdata',
   },
 } as const;

@@ -1,0 +1,121 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Button from './ui/Button.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const highlights = [
+  t('rauxdata.tech1'),
+  t('rauxdata.tech2'),
+  t('rauxdata.tech3'),
+  t('rauxdata.tech4'),
+  t('rauxdata.tech5'),
+];
+
+// Reuses the hero's monochrome stack icons (#373737 on light) for visual parity.
+const stack = [
+  { name: 'NestJS', icon: 'nestjs' },
+  { name: 'Prisma', icon: 'prisma' },
+  { name: 'PostgreSQL', icon: 'postgresql' },
+  { name: 'Next.js', icon: 'next' },
+  { name: 'Preact', icon: 'preact' },
+  { name: 'Vite', icon: 'vite' },
+  { name: 'TypeScript', icon: 'typescript' },
+];
+---
+
+<section id='rauxdata' class='bg-beige px-4 sm:px-6 md:px-8 lg:px-10'>
+  <div class='w-full mx-auto max-w-screen-xl pt-14 pb-14'>
+    <div
+      class='overflow-hidden rounded-2xl border border-black-200/70 bg-cream shadow-[0_24px_70px_-32px_rgba(13,13,13,0.45)]'
+    >
+      <div class='grid grid-cols-1 lg:grid-cols-2'>
+        <!-- Content -->
+        <div class='flex flex-col p-8 md:p-10 lg:p-12'>
+          <span
+            class='inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand'
+          >
+            <span class='h-2 w-2 rounded-full bg-brand'></span>
+            {t('rauxdata.kicker')}
+          </span>
+
+          <h2 class='mt-5 text-3xl md:text-4xl font-bold text-black'>
+            {t('rauxdata.title')}
+          </h2>
+          <p class='mt-2 text-base md:text-lg font-medium text-black-500'>
+            {t('rauxdata.tagline')}
+          </p>
+          <p class='mt-5 font-medium text-black'>{t('rauxdata.problem')}</p>
+
+          <ul class='mt-6 grid gap-3'>
+            {
+              highlights.map((item) => (
+                <li class='flex items-start gap-3 text-sm md:text-base text-black'>
+                  <svg
+                    class='mt-1 shrink-0 text-brand'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    stroke-width='2.5'
+                    width='16'
+                    height='16'
+                  >
+                    <path d='M5 12l5 5l10 -10' />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class='mt-8'>
+            <p
+              class='mb-3 text-xs font-mono uppercase tracking-wider text-black-400'
+            >
+              {t('rauxdata.stack_label')}
+            </p>
+            <div class='flex flex-wrap items-center gap-x-5 gap-y-3'>
+              {
+                stack.map((s) => (
+                  <img
+                    src={`/images/stack/${s.icon}.svg`}
+                    alt={s.name}
+                    title={s.name}
+                    width='28'
+                    height='28'
+                    class='h-7 w-auto'
+                    loading='lazy'
+                  />
+                ))
+              }
+            </div>
+          </div>
+
+          <div class='mt-9'>
+            <Button
+              href='https://rauxdata.com'
+              target='_blank'
+              text={t('rauxdata.cta')}
+            />
+          </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div class='flex items-center bg-black-900 p-6 md:p-8 lg:p-10'>
+          <img
+            src='/images/rauxdata/dashboard-dark.png'
+            alt={t('rauxdata.image_alt')}
+            width='3002'
+            height='1784'
+            loading='lazy'
+            class='w-full h-auto rounded-lg ring-1 ring-black-600/70 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)]'
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
