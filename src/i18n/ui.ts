@@ -12,9 +12,9 @@ export const ui = {
     'nav.works': 'Works',
     'nav.ai': 'AI',
     'nav.contact': 'Contact',
-    'hero.role': 'FULLSTACK DEVELOPER',
+    'hero.role': 'SENIOR FRONTEND / FULL STACK DEVELOPER',
     'hero.years': 'years of experience',
-    'bio.title': 'Frontend Specialist Dev',
+    'bio.title': 'Senior Frontend / Full Stack Developer',
     'bio.greeting': "Hi, I'm Nicolás!",
     'bio.paragraph1':
       "An Argentinian creative developer soaking up the vibes in Mexico City. With over 14 years of experience in web technologies, I've had the chance to build, break, and create some pretty awesome things on the internet.",
@@ -61,7 +61,7 @@ export const ui = {
     'ai.monetate_name': 'MONETATE',
     'ai.monetate_description': 'AI-Powered Experience Optimization Platform',
     'ai.monetate_features': 'Personalization · Experimentation · ML',
-    'ai.monetate_role': 'Frontend Specialist',
+    'ai.monetate_role': 'Frontend Specialist · Full Stack (Python · Clojure)',
     'ai.tools_expertise': 'AI Tools & Expertise',
     'ai.tools_description':
       'Agent stack in the editor—agents, subagents, skills, MCP, hooks, and models—with human review, clear architecture, and shippable quality.',
@@ -115,9 +115,9 @@ export const ui = {
     'nav.works': 'Proyectos',
     'nav.ai': 'IA',
     'nav.contact': 'Contacto',
-    'hero.role': 'DESARROLLADOR FULLSTACK',
+    'hero.role': 'DESARROLLADOR SENIOR FRONTEND / FULL STACK',
     'hero.years': 'años de experiencia',
-    'bio.title': 'Desarrollador Frontend Especializado',
+    'bio.title': 'Desarrollador Senior Frontend / Full Stack',
     'bio.greeting': '¡Hola, soy Nicolás!',
     'bio.paragraph1':
       'Un desarrollador argentino creativo disfrutando la buena onda de la Ciudad de México. Con más de 14 años de experiencia en tecnologías web, he tenido la oportunidad de construir, romper y crear cosas increíbles en la red.',
@@ -164,7 +164,7 @@ export const ui = {
     'ai.monetate_name': 'MONETATE',
     'ai.monetate_description': 'Plataforma de Optimización de Experiencias con IA',
     'ai.monetate_features': 'Personalización · Experimentación · ML',
-    'ai.monetate_role': 'Especialista Frontend',
+    'ai.monetate_role': 'Especialista Frontend · Full Stack (Python · Clojure)',
     'ai.tools_expertise': 'Herramientas de IA y Experiencia',
     'ai.tools_description':
       'Stack de agentes en el editor—agentes, subagentes, skills, MCP, hooks y modelos—con revisión humana, arquitectura clara y calidad entregable.',

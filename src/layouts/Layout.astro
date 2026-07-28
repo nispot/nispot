@@ -12,8 +12,10 @@ interface Props {
 const { title, lang = 'en', canonical } = Astro.props;
 
 // Absolute URLs so crawlers get valid canonical + hreflang signals.
+// English canonical lives at the bare root (/), not /en/ — the root domain
+// is the linkable, authoritative URL, so hreflang en + x-default point to it.
 const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site).href;
-const enURL = new URL('/en/', Astro.site).href;
+const enURL = new URL('/', Astro.site).href;
 const esURL = new URL('/es/', Astro.site).href;
 ---
 
@@ -22,7 +24,7 @@ const esURL = new URL('/es/', Astro.site).href;
     <meta charset='UTF-8' />
     <meta
       name='description'
-      content='Nispot.dev | Nicolás Arichuluaga - Frontend Specialist'
+      content='Senior Frontend / Full Stack Developer · React · TypeScript · Python · Clojure · AI-Augmented Development'
     />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
