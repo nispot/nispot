@@ -1,20 +1,51 @@
 ---
 import { defaultLang } from '../i18n/ui';
+
+// Absolute URLs so crawlers get valid canonical + hreflang signals.
+const enUrl = new URL('/en/', Astro.site).href;
+const esUrl = new URL('/es/', Astro.site).href;
 ---
 
-<!doctype html lang={defaultLang}>
+<!doctype html>
+<html lang={defaultLang}>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>nispot.dev</title>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <title>nispot.dev | Nicolás Arichuluaga - Frontend Specialist</title>
+    <meta
+      name='description'
+      content='Nispot.dev | Nicolás Arichuluaga - Frontend Specialist'
+    />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+
+    <!-- Canonical + language signals for crawlers (no JS required). -->
+    <link rel='canonical' href={enUrl} />
+    <link rel='alternate' hreflang='en' href={enUrl} />
+    <link rel='alternate' hreflang='es' href={esUrl} />
+    <link rel='alternate' hreflang='x-default' href={enUrl} />
+
+    <!--
+      Humans first: respect a stored choice or the browser language.
+      This runs BEFORE the meta refresh below, so it wins for JS clients.
+    -->
     <script is:inline>
       const storedLang = localStorage.getItem('preferred-lang');
-      const browserLang = navigator.language || navigator.languages[0];
+      const browserLang = navigator.language || navigator.languages[0] || 'en';
       const lang = storedLang || (browserLang.startsWith('es') ? 'es' : 'en');
-      
-      window.location.href = '/' + lang + '/';
+
+      window.location.replace('/' + lang + '/');
     </script>
+
+    <!-- No-JS fallback (crawlers, bots): send them to the default locale. -->
+    <meta http-equiv='refresh' content={`0; url=${enUrl}`} />
   </head>
   <body>
+    <!-- Real content so a non-following client never sees a blank page. -->
+    <h1>nispot.dev — Nicolás Arichuluaga</h1>
+    <p>Frontend Specialist Developer.</p>
+    <p>
+      <a href={enUrl}>Continue in English</a> ·
+      <a href={esUrl}>Continuar en español</a>
+    </p>
   </body>
 </html>
