@@ -39,7 +39,7 @@ export const ui = {
     'process.step4.description':
       'Automation plus real QA: catch what models still miss—reliability, accessibility, edge cases—then iterate from feedback.',
     'projects.title':
-      "Take a look at my most<br /> impactful projects",
+      'Independent & freelance projects<br />I’m especially proud to showcase',
     'projects.visit_website': 'visit website',
     'projects.code': 'Code',
     'caption.text':
@@ -142,7 +142,7 @@ export const ui = {
     'process.step4.description':
       'Automatización + QA real: lo que los modelos aún fallan—fiabilidad, accesibilidad, casos borde—y mejora con feedback.',
     'projects.title':
-      'Echa un vistazo a mis proyectos<br /> más impactantes',
+      'Proyectos independientes y freelance<br />de los que más orgullo me da',
     'projects.visit_website': 'visitar sitio',
     'projects.code': 'Código',
     'caption.text':
