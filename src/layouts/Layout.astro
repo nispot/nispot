@@ -6,9 +6,15 @@ import Header from '../components/Header.astro';
 interface Props {
   title: string;
   lang?: string;
+  canonical?: string;
 }
 
-const { title, lang = 'en' } = Astro.props;
+const { title, lang = 'en', canonical } = Astro.props;
+
+// Absolute URLs so crawlers get valid canonical + hreflang signals.
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site).href;
+const enURL = new URL('/en/', Astro.site).href;
+const esURL = new URL('/es/', Astro.site).href;
 ---
 
 <!doctype html lang={lang}>
@@ -21,6 +27,11 @@ const { title, lang = 'en' } = Astro.props;
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
+    <link rel='canonical' href={canonicalURL} />
+    <link rel='alternate' hreflang='en' href={enURL} />
+    <link rel='alternate' hreflang='es' href={esURL} />
+    <link rel='alternate' hreflang='x-default' href={enURL} />
+    <slot name='head' />
     <title>{title}</title>
   </head>
   <body>

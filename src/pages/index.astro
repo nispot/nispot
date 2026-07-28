@@ -1,51 +1,41 @@
 ---
-import { defaultLang } from '../i18n/ui';
-
-// Absolute URLs so crawlers get valid canonical + hreflang signals.
-const enUrl = new URL('/en/', Astro.site).href;
-const esUrl = new URL('/es/', Astro.site).href;
+import AI from '../components/AI.astro';
+import Biography from '../components/Biography.astro';
+import Caption from '../components/Caption.astro';
+import CompaniesRow from '../components/CompaniesRow.astro';
+import Hero from '../components/Hero.astro';
+import Process from '../components/Process.astro';
+import Projects from '../components/Projects.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<!doctype html>
-<html lang={defaultLang}>
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
-    <title>nispot.dev | Nicolás Arichuluaga - Frontend Specialist</title>
-    <meta
-      name='description'
-      content='Nispot.dev | Nicolás Arichuluaga - Frontend Specialist'
-    />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+<Layout
+  title='nispot.dev | Nicolás Arichuluaga - Frontend Specialist'
+  lang='en'
+  canonical='/en/'
+>
+  <!--
+    The root IS the full site (default locale), so any crawler gets a 200
+    with the complete portfolio — nothing to follow. Humans who prefer
+    Spanish get nudged to /es/ via JS; bots stay and read the content.
+  -->
+  <script is:inline slot='head'>
+    (function () {
+      const stored = localStorage.getItem('preferred-lang');
+      const browser =
+        navigator.language || navigator.languages?.[0] || 'en';
+      const lang = stored || (browser.startsWith('es') ? 'es' : 'en');
+      if (lang === 'es') window.location.replace('/es/');
+    })();
+  </script>
 
-    <!-- Canonical + language signals for crawlers (no JS required). -->
-    <link rel='canonical' href={enUrl} />
-    <link rel='alternate' hreflang='en' href={enUrl} />
-    <link rel='alternate' hreflang='es' href={esUrl} />
-    <link rel='alternate' hreflang='x-default' href={enUrl} />
-
-    <!--
-      Humans first: respect a stored choice or the browser language.
-      This runs BEFORE the meta refresh below, so it wins for JS clients.
-    -->
-    <script is:inline>
-      const storedLang = localStorage.getItem('preferred-lang');
-      const browserLang = navigator.language || navigator.languages[0] || 'en';
-      const lang = storedLang || (browserLang.startsWith('es') ? 'es' : 'en');
-
-      window.location.replace('/' + lang + '/');
-    </script>
-
-    <!-- No-JS fallback (crawlers, bots): send them to the default locale. -->
-    <meta http-equiv='refresh' content={`0; url=${enUrl}`} />
-  </head>
-  <body>
-    <!-- Real content so a non-following client never sees a blank page. -->
-    <h1>nispot.dev — Nicolás Arichuluaga</h1>
-    <p>Frontend Specialist Developer.</p>
-    <p>
-      <a href={enUrl}>Continue in English</a> ·
-      <a href={esUrl}>Continuar en español</a>
-    </p>
-  </body>
-</html>
+  <Hero />
+  <CompaniesRow />
+  <Biography />
+  <Process />
+  <Projects />
+  <AI />
+  <Caption />
+  <Testimonials />
+</Layout>
