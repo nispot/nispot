@@ -61,7 +61,7 @@ export const ui = {
     'ai.monetate_name': 'MONETATE',
     'ai.monetate_description': 'AI-Powered Experience Optimization Platform',
     'ai.monetate_features': 'Personalization · Experimentation · ML',
-    'ai.monetate_role': 'Frontend Specialist · Full Stack (Python · Clojure)',
+    'ai.monetate_role': 'Frontend Specialist · Full Stack (Python)',
     'ai.tools_expertise': 'AI Tools & Expertise',
     'ai.tools_description':
       'Agent stack in the editor—agents, subagents, skills, MCP, hooks, and models—with human review, clear architecture, and shippable quality.',
@@ -182,7 +182,7 @@ export const ui = {
     'ai.monetate_name': 'MONETATE',
     'ai.monetate_description': 'Plataforma de Optimización de Experiencias con IA',
     'ai.monetate_features': 'Personalización · Experimentación · ML',
-    'ai.monetate_role': 'Especialista Frontend · Full Stack (Python · Clojure)',
+    'ai.monetate_role': 'Especialista Frontend · Full Stack (Python)',
     'ai.tools_expertise': 'Herramientas de IA y Experiencia',
     'ai.tools_description':
       'Stack de agentes en el editor—agentes, subagentes, skills, MCP, hooks y modelos—con revisión humana, arquitectura clara y calidad entregable.',
